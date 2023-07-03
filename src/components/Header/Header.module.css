@@ -1,0 +1,20 @@
+.headerMain {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerList {
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+}
+
+.headerList li {
+    margin-right: 70px;
+}
+
+.headerList li a{
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+}
