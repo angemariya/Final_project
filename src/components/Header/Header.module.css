@@ -1,20 +1,55 @@
 .headerMain {
     display: flex;
     justify-content: space-between;
+    padding: 20px 26px;
 }
 
 .headerList {
     display: flex;
     list-style: none;
     text-decoration: none;
+    margin-right: 173px;
 }
 
 .headerList li {
     margin-right: 70px;
+    font-size: 16px;
 }
 
-.headerList li a{
-    text-decoration: none;
-    color: #000;
-    font-size: 16px;
+.headerList li a:hover{
+    color: #339933;
+}
+
+.headerList li a:active {
+    color: #339933;
+}
+
+.grnButton {
+    background-color: #339933;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logo {
+    margin-right: 60px;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.headerListWrapper {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (width < 900px) {
+    .headerList {
+    margin-right: 30px;
+}
 }

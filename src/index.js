@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { App } from './components/App';
-import { Catalogs } from './components/Catalogs';
-import { Coupon } from './components/Coupon';
+import { AllProducts } from './components/AllProducts';
+import { Main } from './components/Main';
 import { Sale } from './components/Sale';
-import { Contact } from './components/Contact';
+import { Busket } from './components/Busket';
+
 
 const router = createBrowserRouter([
   {
@@ -14,21 +15,21 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '/catalogs',
-        element: <Catalogs />
+        path: '/all',
+        element: <AllProducts />
       },
       {
-        path: '/coupon',
-        element: <Coupon />
+        path: '/main',
+        element: <Main />
       },
       {
         path: '/sale',
         element: <Sale />
       },
       {
-        path: '/contact',
-        element: <Contact />
-      }
+        path: '/busket',
+        element: <Busket />
+      },
     ]
   }
 ])

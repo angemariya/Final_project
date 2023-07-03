@@ -1,4 +1,4 @@
-export const Coupon = () => {
+export const Main = () => {
     return (
         <div>
             Coupon

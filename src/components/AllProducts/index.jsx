@@ -1,4 +1,4 @@
-export const Catalogs = () => {
+export const AllProducts = () => {
     return (
         <div>
             Catalogs
