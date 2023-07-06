@@ -1,7 +1,9 @@
+import { CouponForm } from "./CouponForm"
+
 export const Main = () => {
     return (
-        <div>
-            Coupon
-        </div>
+        <main>
+            <CouponForm />
+        </main>
     )
 }
