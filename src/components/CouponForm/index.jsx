@@ -33,33 +33,33 @@ export const CouponForm = () => {
 
     return (
         <div className={styles.wrapper}>
-
+            <section className={styles.centeringSection}>
                 <img className={styles.imageWrapper} src={gnome} alt="gnome" />
-            <div className={styles.formWrapper}>
-                <div className={styles.textWrapper}>
-                    <span className={styles.bigtextWrapper}>5% off </span><br/>on the first order</div>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <Controller
-                        name="phone"
-                        control={control}
-                        defaultValue="+49"
-                        render={({ field, fieldState: { error } }) => (
-                            <div className={styles.inputWrapper}>
-                                <input
-                                    {...field}
-                                    className={styles.input}
-                                    type="tel"
-                                    onChange={handlePhoneChange}
-                                    maxLength={14}
-                                />
-                                {error && <span>Phone number is required.</span>}
-                            </div>
-                        )}
-                    />
-                <button className={styles.formButton} type="submit">Get a discount</button>
-                </form>
-            </div>
+                <div className={styles.formWrapper}>
+                    <div className={styles.textWrapper}>
+                        <span className={styles.bigtextWrapper}>5% off </span><br/>on the first order</div>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <Controller
+                            name="phone"
+                            control={control}
+                            defaultValue="+49"
+                            render={({ field, fieldState: { error } }) => (
+                                <div className={styles.inputWrapper}>
+                                    <input
+                                        {...field}
+                                        className={styles.input}
+                                        type="tel"
+                                        onChange={handlePhoneChange}
+                                        maxLength={14}
+                                    />
+                                    {error && <span>Phone number is required.</span>}
+                                </div>
+                            )}
+                        />
+                        <button className={styles.formButton} type="submit">Get a discount</button>
+                    </form>
+                </div>
+            </section>
         </div>
-
     );
 };

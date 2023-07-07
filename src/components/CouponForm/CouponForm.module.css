@@ -1,6 +1,12 @@
 .wrapper {
     background: linear-gradient(223deg, #393 0%, #006300 100%);
+}
+
+.centeringSection {
     display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 45px 0;
 }
 
 .textWrapper {

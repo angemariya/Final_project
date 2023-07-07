@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 import { App } from './components/App';
 import { AllCategoriesPage  } from './pages/AllCategoriesPage';
 import { HomePage } from './pages/HomePage';
@@ -8,7 +10,7 @@ import { SalePage } from './pages/SalePage';
 import { BusketPage } from './pages/BusketPage';
 import { CategoryPage } from './pages/CategoryPage';
 import { ProductPage } from './pages/ProductPage';
-import { ErrorPage } from './pages/ErrorPage'
+import { ErrorPage } from './pages/ErrorPage';
 import './index.css';
 
 
@@ -53,8 +55,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={ router }>
-      <App />
-    </RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={ router }>
+        <App />
+      </RouterProvider>
+    </Provider>
   </React.StrictMode>
 );

@@ -1,16 +1,9 @@
-.centeringContainer{
-  width: 1380px;
-  margin: auto;
-  padding: 0 30px;
-}
-
 .headerMain {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
 
 .headerList {
     display: flex;
