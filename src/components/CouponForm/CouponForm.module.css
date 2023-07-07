@@ -1,8 +1,6 @@
 .wrapper {
     background: linear-gradient(223deg, #393 0%, #006300 100%);
     display: flex;
-    padding: 27px;
-    padding-top: 44px;
 }
 
 .textWrapper {
@@ -38,6 +36,7 @@
     border-radius: 25px;
     background: #FFF;
     padding: 27px 50px;
+    padding-right: 0;
     color: #6C6C6C;
     font-size: 18px;
     font-family: Montserrat;
@@ -56,7 +55,7 @@
     font-family: Montserrat;
     font-size: 28.739px;
     font-weight: 700;
-    padding: 20px 118px;
+    padding: 20px 151px;
     margin-bottom: 45px;
 }
 

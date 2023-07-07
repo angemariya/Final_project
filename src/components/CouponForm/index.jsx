@@ -1,6 +1,6 @@
 import { useForm, Controller } from "react-hook-form";
 import styles from "./CouponForm.module.css"
-import gnome from "../../../images/gnome.png"
+import gnome from "../../images/gnome.png"
 
 export const CouponForm = () => {
     const { handleSubmit, control, setValue } = useForm();

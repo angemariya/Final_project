@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { App } from './components/App';
-import { AllProducts } from './components/AllProducts';
-import { Main } from './components/Main';
-import { Sale } from './components/Sale';
-import { Busket } from './components/Busket';
+import { AllCategoriesPage  } from './pages/AllCategoriesPage';
+import { HomePage } from './pages/HomePage';
+import { SalePage } from './pages/SalePage';
+import { BusketPage } from './pages/BusketPage';
+import { CategoryPage } from './pages/CategoryPage';
+import { ProductPage } from './pages/ProductPage';
+import { ErrorPage } from './pages/ErrorPage'
+import './index.css';
 
 
 const router = createBrowserRouter([
@@ -15,20 +18,32 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '/all',
-        element: <AllProducts />
+        path: '/categories',
+        element: <AllCategoriesPage />
       },
       {
-        path: '/main',
-        element: <Main />
+        path: '/categories/:id',
+        element: <CategoryPage />
+      },
+      {
+        path: '/products/:id',
+        element: <ProductPage />
+      },
+      {
+        path: '/home',
+        element: <HomePage />
       },
       {
         path: '/sale',
-        element: <Sale />
+        element: <SalePage />
       },
       {
         path: '/busket',
-        element: <Busket />
+        element: <BusketPage />
+      },
+      {
+        path: '/error',
+        element: <ErrorPage />
       },
     ]
   }

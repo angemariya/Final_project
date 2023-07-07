@@ -4,10 +4,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 1440px;
   font-weight: 400;
   line-height: 1;
-  padding: 0 30px;
 }
 
 *,
@@ -28,7 +26,6 @@ img {
 
 @media screen and (width < 900px) {
   body{
-    max-width: 1024px;
     padding: 0 5px;
   }
 }
