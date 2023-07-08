@@ -15,9 +15,11 @@ export const Catalog = () => {
 
             <div className={styles.catalogItemsWrapper}>
                 {data && data.map(el => 
-                    <NavLink to={`/categories/${el.id}`} key={el.id} className={styles.catalogOneItemWrapper}>
-                        <img className={styles.itemImage} src={`http://127.0.0.1:3333${el.image}`} alt={el.title} />
-                        <p className={styles.catalogItemLabel}>{ el.title }</p>
+                    <NavLink to={`/categories/${el.id}`}>
+                        <div key={el.id} className={styles.catalogOneItemWrapper}>
+                            <img className={styles.itemImage} src={`http://127.0.0.1:3333${el.image}`} alt={el.title} />
+                            <p className={styles.catalogItemLabel}>{ el.title }</p>
+                        </div>    
                     </NavLink>
                 )}
             </div>

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { CenteringContainer } from '../../components/CenteringContainer'
 import { useGetOneCategoryQuery } from '../../redux/apiSlice'
 import styles from './CategoryPage.module.css'
@@ -38,14 +38,15 @@ export const CategoryPage = () => {
                 </div>
                 <div className={styles.itemsWrapper}>
                     {data?.data.map(el =>
-                        <div key={el.id}>
-                            <img src={`http://127.0.0.1:3333${el.image}`} />
-                            <p>{el.price} $</p>
-                            <p>{el.title}</p>
-                        </div>
+                        <NavLink to={`/products/${el.id}`}>
+                            <div key={el.id}>
+                                <img src={`http://127.0.0.1:3333${el.image}`} />
+                                <p>{el.price} $</p>
+                                <p>{el.title}</p>
+                            </div>
+                        </NavLink>
                     )}
                 </div>
-
             </>
         </CenteringContainer>
     )
