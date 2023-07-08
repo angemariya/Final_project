@@ -1,0 +1,78 @@
+.mapContainer iframe {
+    width: 100%;
+    height: 525px;
+    border: none;
+}
+
+.mapContainer {
+    padding-bottom: 38px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 48px;
+    padding-bottom: 65px;
+}
+
+.firstSection {
+    margin-right: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 130%;
+    margin-bottom: 25px;
+}
+
+.phoneNumber {
+    font-size: 70px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.socialIcons {
+    display: flex;
+}
+
+.socialIconWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.socialIconWrapper a{
+    margin-bottom: 8px;
+}
+
+.socialIconWrapper span{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.socialIconWrapper:not(:last-child) {
+    margin-right: 34px;
+}
+
+.addressText {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 130%;
+    text-decoration: underline;
+}
+
+.littleText {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 130%;
+}
+
+.Text {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+}

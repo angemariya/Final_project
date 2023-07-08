@@ -14,10 +14,16 @@ body {
   box-sizing: inherit;
 }
 
+h1, h2 {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
   color: #000000;
 }
+
+
 
 img {
   max-width: 100%;

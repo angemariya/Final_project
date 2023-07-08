@@ -12,7 +12,7 @@ export const Header = () => {
                 <div className={styles.headerMain}>
                     <div className={styles.logoWrapper}>
                         <img className={styles.logo} src={logo} alt="#"></img>
-                        <NavLink to='/categories'className={styles.grnButton}>Catalog</NavLink>
+                        <NavLink to={`/categories/all`} className={styles.grnButton}>Catalog</NavLink>
                     </div>
                     <div className={styles.headerListWrapper}>
                         <ul className={styles.headerList}>
