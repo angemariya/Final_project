@@ -13,7 +13,6 @@ import { ProductPage } from './pages/ProductPage';
 import { ErrorPage } from './pages/ErrorPage';
 import './index.css';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
