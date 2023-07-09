@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom'
-import { CenteringContainer } from '../../components/CenteringContainer'
-import { useGetAllSaleQuery } from '../../redux/apiSlice'
-import styles from './SalePage.module.css'
+import { NavLink } from 'react-router-dom';
+import { CenteringContainer } from '../../components/CenteringContainer';
+import { useGetAllSaleQuery } from '../../redux/apiSlice';
+import styles from './SalePage.module.css';
 
 export const SalePage = () => {
     const { data, error, isLoading } = useGetAllSaleQuery();
