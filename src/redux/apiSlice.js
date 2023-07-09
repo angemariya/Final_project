@@ -12,6 +12,9 @@ export const apiSlice = createApi({
         }),
         getOneProductByCategory: builder.query({
             query: (id) => `products/${id}`,
+        }),
+        sendData: builder.mutation({
+            
         })
     })
 })
