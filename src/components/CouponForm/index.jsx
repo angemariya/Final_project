@@ -26,9 +26,13 @@ export const CouponForm = () => {
 
     };
 
+    const isPhoneValid = (phone) => {
+        return phone.startsWith('+49') || phone === '+4' || phone === '+'
+    }
+
     const handlePhoneChange = (e) => {
         const phoneValue = e.target.value;
-        setValue('phone', phoneValue.startsWith('+49') ? phoneValue : `+49${phoneValue}`);
+        setValue('phone', (isPhoneValid(phoneValue)  ? phoneValue : `+49${phoneValue}`).replace(/[^0-9\+]/, ""));
     };
 
     return (
