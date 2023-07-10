@@ -1,39 +1,26 @@
 import { useForm, Controller } from "react-hook-form";
 import styles from "./CouponForm.module.css"
 import gnome from "../../images/gnome.png"
+import { useSendDataMutation } from "../../redux/apiSlice";
 
 export const CouponForm = () => {
     const { handleSubmit, control, setValue } = useForm();
 
-    const onSubmit = async (data) => {
-        try {
-            const response = await fetch("http://127.0.0.1:3333/sale/send", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            if (response.ok) {
-                console.log('Form data submitted successfully');
-            } else {
-                console.log('Failed to submit form data');
-            }
-        } catch (error) {
-            console.error('Error occurred while submitting form data:', error);
-        }
-
-    };
-
+    const [sendData, { isLoading, isSuccess, isError }] = useSendDataMutation();
+    
     const isPhoneValid = (phone) => {
-        return phone.startsWith('+49') || phone === '+4' || phone === '+'
+        return phone.startsWith('+49') || phone === '+4' || phone === '+' || phone === ''
     }
 
     const handlePhoneChange = (e) => {
         const phoneValue = e.target.value;
         setValue('phone', (isPhoneValid(phoneValue)  ? phoneValue : `+49${phoneValue}`).replace(/[^0-9\+]/, ""));
     };
+
+    const disabled = isLoading || isSuccess;
+
+    isSuccess && console.log("Success");
+    isError && console.error('Error occurred while submitting form data');
 
     return (
         <div className={styles.wrapper}>
@@ -42,7 +29,7 @@ export const CouponForm = () => {
                 <div className={styles.formWrapper}>
                     <div className={styles.textWrapper}>
                         <span className={styles.bigtextWrapper}>5% off </span><br/>on the first order</div>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(sendData)}>
                         <Controller
                             name="phone"
                             control={control}
@@ -50,17 +37,22 @@ export const CouponForm = () => {
                             render={({ field, fieldState: { error } }) => (
                                 <div className={styles.inputWrapper}>
                                     <input
+                                        disabled={disabled}
                                         {...field}
                                         className={styles.input}
                                         type="tel"
                                         onChange={handlePhoneChange}
                                         maxLength={14}
+                                        minLength={14}
                                     />
                                     {error && <span>Phone number is required.</span>}
                                 </div>
                             )}
                         />
-                        <button className={styles.formButton} type="submit">Get a discount</button>
+                        <button
+                            disabled={disabled}
+                            className={styles.formButton}
+                            type="submit">Get a discount</button>
                     </form>
                 </div>
             </section>

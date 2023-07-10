@@ -14,15 +14,22 @@ export const apiSlice = createApi({
             query: (id) => `products/${id}`,
         }),
         getAllSale: builder.query({
-            query: () => `products/all`,
+            query: () => 'products/all',
         }),
         getAllProducts: builder.query({
-            query: () => `products/all`,
+            query: () => 'products/all',
         }),
         sendData: builder.mutation({
-            
-        })
-    })
-})
+            query: (data) => ({
+                url: 'sale/send',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }),
+        }),
+    }),
+});
 
-export const { useGetAllCategoriesQuery, useGetOneCategoryQuery, useGetOneProductByCategoryQuery, useGetAllSaleQuery, useGetAllProductsQuery } = apiSlice;
+export const { useGetAllCategoriesQuery, useGetOneCategoryQuery, useGetOneProductByCategoryQuery, useGetAllSaleQuery, useGetAllProductsQuery, useSendDataMutation } = apiSlice;
