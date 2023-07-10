@@ -9,7 +9,7 @@ export const CouponForm = () => {
     const [sendData, { isLoading, isSuccess, isError }] = useSendDataMutation();
     
     const isPhoneValid = (phone) => {
-        return phone.startsWith('+49') || phone === '+4' || phone === '+' || phone === ''
+        return phone.startsWith('+49') || phone.startsWith('+4') || phone.startsWith('+')
     }
 
     const handlePhoneChange = (e) => {
@@ -19,7 +19,7 @@ export const CouponForm = () => {
 
     const disabled = isLoading || isSuccess;
 
-    isSuccess && console.log("Success");
+    isSuccess && console.log(`Success. Your phone number was submitted`);
     isError && console.error('Error occurred while submitting form data');
 
     return (
