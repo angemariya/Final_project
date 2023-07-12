@@ -1,11 +1,9 @@
 .wrapper {
     background: linear-gradient(223deg, #393 0%, #006300 100%);
-}
-
-.centeringSection {
     display: flex;
-    width: 1200px;
-    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     padding: 45px 0;
 }
 
@@ -20,16 +18,9 @@
     font-size: 120px;
 }
 
-.imageWrapper{
-    width: 448px;
-    height: 448px;
-    margin-right: 200px;
-    flex-shrink: 0;
-
-}
-
 .imageWrapper img {
-    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 .inputWrapper {
@@ -37,7 +28,6 @@
 }
 
 .input {
-    width: 473px;
     border: none;
     border-radius: 25px;
     background: #FFF;
@@ -49,19 +39,22 @@
     font-weight: 600;
 }
 
-.formWrapper {
-    margin-right: 256px;
+.form {
+    display: flex;
+    flex-direction: column;
 }
 
 .formButton {
+    min-width: 33%;
+    margin-top: 30px;
     border-radius: 25px;
-    border: 2.395px solid #FFF;
+    border: 2px solid #FFF;
     background: transparent;
     color: #FFF;
     font-family: Montserrat;
-    font-size: 28.739px;
+    font-size: 28px;
     font-weight: 700;
-    padding: 20px 151px;
+    padding: 20px 10%;
     margin-bottom: 45px;
     cursor: pointer;
 }

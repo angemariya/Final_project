@@ -10,7 +10,8 @@
 
 .wrapper {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     padding-top: 48px;
     padding-bottom: 65px;
 }
