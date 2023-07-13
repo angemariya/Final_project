@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { App } from './App';
 import { AllCategoriesPage  } from './pages/AllCategoriesPage';
+import { AllProductsPage  } from './pages/AllProductsPage';
 import { HomePage } from './pages/HomePage';
 import { SalePage } from './pages/SalePage';
 import { BusketPage } from './pages/BusketPage';
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
         element: <ProductPage />
       },
       {
+        path: '/products/all',
+        element: <AllProductsPage />
+      },
+      {
         path: '/home',
         element: <HomePage />
       },
@@ -46,10 +52,6 @@ const router = createBrowserRouter([
         path: '/busket',
         element: <BusketPage />
       },
-      {
-        path: '/error',
-        element: <ErrorPage />
-      },
     ]
   }
 ])
@@ -59,7 +61,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={ store }>
-      <RouterProvider router={ router }>
+      <RouterProvider router={ router }>‚
         <App />
       </RouterProvider>
     </Provider>

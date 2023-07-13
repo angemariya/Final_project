@@ -43,6 +43,7 @@ export const SalePage = () => {
                             <div key={el.id}>
                                 <img src={`http://127.0.0.1:3333${el.image}`} />
                                 <p>{el.price} $</p>
+                                <p>{el.discont_price} $</p>
                                 <p>{el.title}</p>
                             </div>
                         </NavLink>

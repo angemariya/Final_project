@@ -19,7 +19,7 @@ export const CouponForm = () => {
 
     const disabled = isLoading || isSuccess;
 
-    isSuccess && console.log(`Success. Your phone number was submitted`);
+    isSuccess && console.log('Success. Your phone number was submitted');
     isError && console.error('Error occurred while submitting form data');
 
     return (

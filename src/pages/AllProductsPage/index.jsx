@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { CenteringContainer } from '../../components/CenteringContainer';
-import { useGetAllSaleQuery } from '../../redux/apiSlice';
-import styles from './SalePage.module.css';
+import { useGetAllProductsQuery } from '../../redux/apiSlice';
+import styles from './AllProductsPage.module.css';
 
-export const SalePage = () => {
-    const { data, error, isLoading } = useGetAllSaleQuery();
+export const AllProductsPage = () => {
+
+    const { data, isLoading, error } = useGetAllProductsQuery();
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -14,12 +15,10 @@ export const SalePage = () => {
         return <div>Error: {error.message}</div>;
     }
 
-    const filteredData = (data && data.filter(el => el.discont_price !== null))
-
     return (
         <CenteringContainer>
             <>
-                <h1>Products with sale</h1>
+                <h1>All Products</h1>
                 <div>
                     <div>
                         <span>Price</span>
@@ -38,12 +37,13 @@ export const SalePage = () => {
                     </div>
                 </div>
                 <div className={styles.itemsWrapper}>
-                    {filteredData.map(el =>
+                    {data && data.map(el =>
                         <NavLink to={`/products/${el.id}`}>
                             <div key={el.id}>
                                 <img src={`http://127.0.0.1:3333${el.image}`} />
                                 <p>{el.price} $</p>
-                                <p>{el.title}</p>
+                                <p>{el.discont_price}</p>
+                                <p>{el.title} $</p>
                             </div>
                         </NavLink>
                     )}

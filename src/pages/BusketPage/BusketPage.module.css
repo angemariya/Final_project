@@ -1,0 +1,73 @@
+.basketPage {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 50px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.orderDetails {
+    border: 2px solid #000;
+    border-radius: 21px;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.basketItemsWrapper {
+    align-self: stretch;
+}
+
+.header {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 47px;
+}
+
+.priceWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 49px;
+}
+
+.total {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.price {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.dollarSign {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.inputPhone {
+    padding: 25px;
+    color: #929292;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px;
+    border: 1px solid #000;
+    margin-bottom: 25px;
+}
+
+.orderButton {
+    text-align: center;
+    padding: 20px;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    color: #fff;
+    background-color: #393;
+    border: none;
+    border-radius: 17px;
+}
+

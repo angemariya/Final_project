@@ -7,39 +7,43 @@ import styles from './ProductPage.module.css';
 
 export const ProductPage = () => {
     const { id } = useParams();
-    const { data, isLoading } = useGetOneProductByCategoryQuery(id);
+    const { data, isLoading, error } = useGetOneProductByCategoryQuery(id);
     const dispatch = useDispatch();
-
+    
     if (isLoading) {
         return <div>Loading...</div>;
     }
-
-    const gettedData = data[0];
-
+    
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+    
+    const responseData = data[0];
+    
     const addItemToBasketHandler = (item) => dispatch(addItemToBasket(item));
 
     return (
         <CenteringContainer>
-            <h1>{gettedData.title}</h1>
+            <h1>{responseData.title}</h1>
             <div className={styles.productWrapper}>
                 <div className={styles.imageWrapper}>
-                    <img src={`http://localhost:3333/${gettedData.image}`} />
+                    <img src={`http://localhost:3333/${responseData.image}`} />
                 </div>
                 <div>
                     {
-                        (gettedData.discont_price !== null) ? 
+                        (responseData.discont_price !== null) ? 
                             (<>
-                                <div className={styles.price}>{gettedData.discont_price}<span className={styles.dollarSign}>$</span></div>
-                                <div className={styles.discountPrice}>{gettedData.price} <span>$</span> </div>
-                                <div className={styles.discount}>{Math.ceil(gettedData.discont_price * gettedData.price / 100)}%</div>
+                                <div className={styles.price}>{responseData.discont_price}<span className={styles.dollarSign}>$</span></div>
+                                <div className={styles.discountPrice}>{responseData.price} <span>$</span> </div>
+                                <div className={styles.discount}>{Math.floor(100 - (responseData.discont_price / responseData.price / 0.01))}%</div>
                             </>)
                             :
                             (<>
-                                <div className={styles.price}>{gettedData.price}<span className={styles.dollarSign}>$</span></div>
+                                <div className={styles.price}>{responseData.price}<span className={styles.dollarSign}>$</span></div>
                             </>)
                     }
                     <button
-                        onClick={()=>addItemToBasketHandler(gettedData)}
+                        onClick={()=>addItemToBasketHandler(responseData)}
                         className={styles.addButton}>To card</button>
                 </div>
             </div>
