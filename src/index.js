@@ -8,7 +8,7 @@ import { AllCategoriesPage  } from './pages/AllCategoriesPage';
 import { AllProductsPage  } from './pages/AllProductsPage';
 import { HomePage } from './pages/HomePage';
 import { SalePage } from './pages/SalePage';
-import { BusketPage } from './pages/BusketPage';
+import { BasketPage } from './pages/BasketPage';
 import { CategoryPage } from './pages/CategoryPage';
 import { ProductPage } from './pages/ProductPage';
 import { ErrorPage } from './pages/ErrorPage';
@@ -49,8 +49,8 @@ const router = createBrowserRouter([
         element: <SalePage />
       },
       {
-        path: '/busket',
-        element: <BusketPage />
+        path: '/basket',
+        element: <BasketPage />
       },
     ]
   }

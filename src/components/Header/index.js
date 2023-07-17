@@ -18,7 +18,7 @@ export const Header = () => {
                         <li><NavLink to='/products/all'>All Products</NavLink></li>
                         <li><NavLink to='/sale'>All Sale</NavLink></li>
                     </ul>
-                    <NavLink to='/busket'><img src={busket}></img></NavLink>
+                    <NavLink to='/basket'><img src={busket}></img></NavLink>
                 </nav>
             </div>
         </header>

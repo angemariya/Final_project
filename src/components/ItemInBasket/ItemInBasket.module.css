@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 192px 1fr;
     grid-template-rows: auto auto auto;
-    gap: 10px;
+    gap: 30px;
     border-bottom: 1px solid #A7A7A7;
     padding: 40px 0;
     width: 100%;

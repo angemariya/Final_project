@@ -38,8 +38,8 @@ export const AllProductsPage = () => {
                 </div>
                 <div className={styles.itemsWrapper}>
                     {data && data.map(el =>
-                        <NavLink to={`/products/${el.id}`}>
-                            <div key={el.id}>
+                        <NavLink to={`/products/${el.id}`} key={el.id}>
+                            <div>
                                 <img src={`http://127.0.0.1:3333${el.image}`} />
                                 <p>{el.price} $</p>
                                 <p>{el.discont_price}</p>
