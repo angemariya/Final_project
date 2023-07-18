@@ -1,0 +1,50 @@
+.container {
+    position: relative;
+}
+
+.scroll_btn {
+    position: fixed;
+    bottom: 40px;
+    right: 25px;
+    z-index: 5;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: var(--khaki);
+    cursor: pointer;
+    animation: movebtn 3s ease-in-out infinite;
+    transition: all .5s ease-in-out;
+}
+
+.scroll_btn span {
+    font-size: 2.2rem;
+    color: white;
+}
+
+.scroll_btn:hover {
+    background-color: var(--lightKhaki);
+    animation: none;
+}
+
+
+@keyframes movebtn {
+    0% {
+        transform: translateY(0px);
+    }
+
+    25% {
+        transform: translateY(20px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+
+    75% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

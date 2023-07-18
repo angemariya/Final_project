@@ -1,30 +1,23 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
-import { useGetAllProductsQuery } from '../../redux/apiSlice';
-import { CenteringContainer } from '../../components/CenteringContainer';
-import { Filtration } from '../../components/Filtration';
-import styles from './AllProductsPage.module.css';
+import { useGetAllSaleQuery } from '../../redux/apiSlice';
+import styles from './MainSaleSection.module.css';
+import { CenteringContainer } from '../CenteringContainer';
 
-export const AllProductsPage = () => {
+export const MainSaleSection = () => {
 
-    const [filteredItems, setFilteredItems] = useState()
-    const { data, isLoading, error } = useGetAllProductsQuery();
+    const { data, error, isLoading } = useGetAllSaleQuery();
 
     (isLoading) && (<div>Loading...</div>);
     (error) && (<div>Error: {error.message}</div>);
-
-    const setFilteredItemsHandler = (itemsToFilter) => {
-        setFilteredItems(itemsToFilter)
-    }
+    const filteredData = (data && data.filter(el => el.discont_price !== null).slice(0, 3))
 
     return (
         <CenteringContainer>
-            <h1 className={styles.header}>All Products</h1>
-            <Filtration items={data} setFilteredItems={setFilteredItemsHandler} />
+            <h2 className={styles.header}>Sale</h2>
             <div className={styles.itemsWrapper}>
-                {filteredItems && filteredItems.map(el =>
+                {filteredData && filteredData.map(el =>
                     <NavLink to={`/products/${el.id}`} key={el.id} className={styles.itemContainer}>
-                        <img src={`http://127.0.0.1:3333${el.image}`} alt={el.title}/>
+                        <img src={`http://127.0.0.1:3333${el.image}`} />
                         <div className={styles.priceContainer}>
                             {(el.discont_price) ?
                                 (<>

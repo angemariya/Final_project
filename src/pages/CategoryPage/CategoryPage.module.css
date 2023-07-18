@@ -3,3 +3,10 @@
     grid-template-columns: repeat(4, 1fr); 
     grid-gap: 20px;
 }
+
+.header {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    margin: 80px 0;
+}

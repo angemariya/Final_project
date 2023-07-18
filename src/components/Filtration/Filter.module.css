@@ -1,0 +1,40 @@
+.label {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.filterMainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 47px;
+}
+
+.priceContainer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.input {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 7px;
+    border: 1px solid #000; 
+    padding: 10px;
+}
+
+input[type="checkbox"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}

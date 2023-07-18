@@ -1,55 +1,45 @@
-import { NavLink } from 'react-router-dom'
-import { CenteringContainer } from '../../components/CenteringContainer'
-import { useGetAllSaleQuery } from '../../redux/apiSlice'
-import styles from './SalePage.module.css'
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { CenteringContainer } from '../../components/CenteringContainer';
+import { useGetAllSaleQuery } from '../../redux/apiSlice';
+import { Filtration } from '../../components/Filtration';
+import styles from './SalePage.module.css';
 
 export const SalePage = () => {
+    const [filteredItems, setFilteredItems] = useState()
     const { data, error, isLoading } = useGetAllSaleQuery();
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
+    (isLoading) && (<div>Loading...</div>);
+    (error) && (<div>Error: {error.message}</div>);
 
     const filteredData = (data && data.filter(el => el.discont_price !== null))
 
+    const setFilteredItemsHandler = (itemsToFilter) => {
+        setFilteredItems(itemsToFilter)
+    }
+
     return (
         <CenteringContainer>
-            <>
-                <h1>Products with sale</h1>
-                <div>
-                    <div>
-                        <span>Price</span>
-                        <input type="number" name="from" placeholder="from" />
-                        <input type="number" name="to" placeholder="to" />
-                    </div>
-                    <div>
-                        <span>Discounted items</span>
-                        <input type="checkbox" />
-                    </div>
-                    <div>
-                        <span>Sorted</span>
-                        <select name="" id="">
-                            <option></option>
-                        </select>
-                    </div>
-                </div>
-                <div className={styles.itemsWrapper}>
-                    {filteredData.map(el =>
-                        <NavLink to={`/products/${el.id}`} key={el.id}>
-                            <div>
-                                <img src={`http://127.0.0.1:3333${el.image}`} />
-                                <p>{el.price} $</p>
-                                <p>{el.discont_price} $</p>
-                                <p>{el.title}</p>
-                            </div>
-                        </NavLink>
-                    )}
-                </div>
-            </>
+            <h1 className={styles.header}>Products with sale</h1>
+            <Filtration items={filteredData} setFilteredItems={setFilteredItemsHandler} />
+            <div className={styles.itemsWrapper}>
+                {filteredItems && filteredItems.map(el =>
+                    <NavLink to={`/products/${el.id}`} key={el.id} className={styles.itemContainer}>
+                        <img src={`http://127.0.0.1:3333${el.image}`} />
+                        <div className={styles.priceContainer}>
+                            {(el.discont_price) ?
+                                (<>
+                                    <p className={styles.mainPrice}>{el.discont_price} $</p>
+                                    <p className={styles.priceWithDiscount}>{el.price} %</p>
+                                    <p className={styles.discount}>{Math.floor(100 - (el.discont_price / el.price / 0.01))} %</p>
+                                </>) :
+                                (<p className={styles.mainPrice}>{el.price} $</p>)
+                            }
+                        </div>
+                        <p className={styles.title}>{el.title}</p>
+                    </NavLink>
+                )}
+            </div>
         </CenteringContainer>
     )
 }

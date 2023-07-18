@@ -1,6 +1,6 @@
 .mapContainer iframe {
     width: 100%;
-    height: 525px;
+    min-height: 525px;
     border: none;
 }
 
@@ -10,8 +10,8 @@
 
 .wrapper {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding-top: 48px;
     padding-bottom: 65px;
 }

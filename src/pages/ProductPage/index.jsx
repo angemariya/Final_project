@@ -10,21 +10,20 @@ export const ProductPage = () => {
     const { data, isLoading, error } = useGetOneProductByCategoryQuery(id);
     const dispatch = useDispatch();
     
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+    (isLoading) && (<div>Loading...</div>);
+    (error) && (<div>Error: {error.message}</div>);
     
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
-    
-    const responseData = data[0];
+    const responseData = data && data[0];
     
     const addItemToBasketHandler = (item) => dispatch(addItemToBasket(item));
 
     return (
         <CenteringContainer>
-            <h1>{responseData.title}</h1>
+            {isLoading ? 
+                (<div>Loading...</div>) :
+                
+                (<>
+                    <h1>{responseData && responseData.title}</h1>
             <div className={styles.productWrapper}>
                 <div className={styles.imageWrapper}>
                     <img src={`http://localhost:3333/${responseData.image}`} />
@@ -46,7 +45,8 @@ export const ProductPage = () => {
                         onClick={()=>addItemToBasketHandler(responseData)}
                         className={styles.addButton}>To card</button>
                 </div>
-            </div>
+                    </div>
+                </>)}
         </CenteringContainer>
     );
 };

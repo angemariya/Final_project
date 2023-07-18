@@ -21,15 +21,18 @@
     font-size: 80px;
     color: #fff;
     font-weight: 700;
+    line-height: 1.5;
 }
 
 .text {
     font-size: 63px;
     color: #fff;
     font-weight: 700;
+    line-height: 1.3;
 }
 
-.button {
+.buttonSale {
+    display: inline-block;
     border: none;
     background-color: #fff;
     font-size: 25px;
@@ -37,4 +40,5 @@
     color: #2D2D2D;
     padding: 25px 50px;
     border-radius: 13px;
+    margin-top: 60px;
 }

@@ -9,7 +9,7 @@ export const MainSection = () => {
                 <div className={styles.textWrapper}>
                     <h1 className={styles.header}>Sale</h1>
                     <p className={styles.text}>New season</p>
-                    <NavLink to='/sale' className={styles.button}>Sale</NavLink>
+                    <NavLink to='/sale' className={styles.buttonSale}>Sale</NavLink>
                 </div>
             <img src={picture} alt="Bushes" />
             </div>

@@ -2,6 +2,7 @@ import { NavLink, useParams } from 'react-router-dom'
 import { CenteringContainer } from '../../components/CenteringContainer'
 import { useGetOneCategoryQuery } from '../../redux/apiSlice'
 import styles from './CategoryPage.module.css'
+import { Filtration } from '../../components/Filtration'
 
 export const CategoryPage = () => {
     const { id } = useParams()
@@ -17,24 +18,8 @@ export const CategoryPage = () => {
 
     return (
         <CenteringContainer>
-            <h1>{data?.category?.title}</h1>
-            <div>
-                <div>
-                    <span>Price</span>
-                    <input type="number" name="from" placeholder="from" />
-                    <input type="number" name="to" placeholder="to" />
-                </div>
-                <div>
-                    <span>Discounted items</span>
-                    <input type="checkbox" />
-                </div>
-                <div>
-                    <span>Sorted</span>
-                    <select name="" id="">
-                        <option></option>
-                    </select>
-                </div>
-            </div>
+            <h1 className={styles.header}>{data?.category?.title}</h1>
+            <Filtration />
             <div className={styles.itemsWrapper}>
                 {data?.data.map(el =>
                     <NavLink to={`/products/${el.id}`} key={el.id}>

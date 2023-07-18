@@ -1,0 +1,13 @@
+.checkbox {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  border: 2px #ddd solid;
+  margin: 0 4px;
+}
+
+.checkboxActive {
+  border-color: rgb(6, 139, 92);
+  background: rgb(13, 143, 48);
+}
