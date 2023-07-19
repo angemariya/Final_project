@@ -6,23 +6,29 @@ export const Filtration = ({ items, setFilteredItems }) => {
     const [fromPrice, setFromPrice] = useState();
     const [toPrice, setToPrice] = useState();
     const [sortOrder, setSortOrder] = useState();
-    const [discountedOnly, setDiscountedOnly] = useState(false)
-    const [isChecked, setIsChecked] = useState(false)
+    const [discountedOnly, setDiscountedOnly] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
     useEffect(() => {
 
-        const filteredItems = isChecked ? (items.filter(item => item.discont_price !== null)): (
-            items.filter((item) => {
+        const filteredItems = isChecked ?
+            (items.filter(item => item.discont_price !== null).filter((item) => {
             return (
-                (!fromPrice || item.price > Number(fromPrice)) &&
-                (!toPrice || item.price < Number(toPrice)) /*&&
-                (!fromPrice || item.discont_price > Number(fromPrice)) &&
-                (!toPrice || item.discont_price < Number(toPrice))*/
+                (!fromPrice || ((item.discont_price || item.price) >= Number(fromPrice))) &&
+                (!toPrice || ((item.discont_price || item.price) <= Number(toPrice))) 
+            )
+            })
+            )
+            :
+            (items.filter((item) => {
+            return (
+                (!fromPrice || ((item.discont_price || item.price) >= Number(fromPrice))) &&
+                (!toPrice || ((item.discont_price || item.price) <= Number(toPrice)))
             )
         })
         )
  
-        const sortedItems = filteredItems.sort((a, b) => {
+        const sortedItems = filteredItems && filteredItems.sort((a, b) => {
             if (sortOrder === 'asc') {
                 return a.price - b.price
             } else if (sortOrder === 'desc') {
@@ -32,19 +38,19 @@ export const Filtration = ({ items, setFilteredItems }) => {
         })
 
         setFilteredItems(sortedItems)
-    }, [items, fromPrice, toPrice, sortOrder, isChecked])
+    }, [fromPrice, toPrice, sortOrder, isChecked])
 
 
     return (
         <div className={styles.filterMainContainer}>
             <div className={styles.priceContainer}>
                 <label className={styles.label}>Price
-                    <input className={styles.input} type="number" value={fromPrice} onChange={(e) => setFromPrice(e.target.value)} placeholder="from" />
-                    <input className={styles.input} type="number" value={toPrice} onChange={(e) => setToPrice(e.target.value)} placeholder="to" />
+                    <input className={styles.input} type="number" value={fromPrice ?? ''} onChange={(e) => setFromPrice(e.target.value)} placeholder="from" />
+                    <input className={styles.input} type="number" value={toPrice ?? ''} onChange={(e) => setToPrice(e.target.value)} placeholder="to" />
                 </label>
             </div>
             <div className={styles.discountContainer}>
-                <label className={styles.label} for="check">
+                <label className={styles.label} htmlFor="check">
                     Discounted items
                     <input
                         id="check"

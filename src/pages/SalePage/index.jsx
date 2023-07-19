@@ -1,15 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { CenteringContainer } from '../../components/CenteringContainer';
 import { useGetAllSaleQuery } from '../../redux/apiSlice';
+import { addItemToBasket } from '../../redux/basketSlice'
 import { Filtration } from '../../components/Filtration';
+import { ItemCard } from '../../components/ItemCard';
 import styles from './SalePage.module.css';
 
 export const SalePage = () => {
     const [filteredItems, setFilteredItems] = useState()
     const { data, error, isLoading } = useGetAllSaleQuery();
+    const dispatch = useDispatch();
 
-    (isLoading) && (<div>Loading...</div>);
     (error) && (<div>Error: {error.message}</div>);
 
     const filteredData = (data && data.filter(el => el.discont_price !== null))
@@ -20,26 +23,22 @@ export const SalePage = () => {
 
     return (
         <CenteringContainer>
-            <h1 className={styles.header}>Products with sale</h1>
-            <Filtration items={filteredData} setFilteredItems={setFilteredItemsHandler} />
-            <div className={styles.itemsWrapper}>
-                {filteredItems && filteredItems.map(el =>
-                    <NavLink to={`/products/${el.id}`} key={el.id} className={styles.itemContainer}>
-                        <img src={`http://127.0.0.1:3333${el.image}`} />
-                        <div className={styles.priceContainer}>
-                            {(el.discont_price) ?
-                                (<>
-                                    <p className={styles.mainPrice}>{el.discont_price} $</p>
-                                    <p className={styles.priceWithDiscount}>{el.price} %</p>
-                                    <p className={styles.discount}>{Math.floor(100 - (el.discont_price / el.price / 0.01))} %</p>
-                                </>) :
-                                (<p className={styles.mainPrice}>{el.price} $</p>)
-                            }
-                        </div>
-                        <p className={styles.title}>{el.title}</p>
-                    </NavLink>
-                )}
-            </div>
+            {isLoading ?
+                (<div>Loading...</div>)
+                :
+                (<>
+                    <h1 className={styles.header}>Products with sale</h1>
+                    <Filtration items={filteredData} setFilteredItems={setFilteredItemsHandler} />
+                    <div className={styles.itemsWrapper}>
+                        {filteredItems && filteredItems.map(el =>
+                            <NavLink to={`/products/${el.id}`} key={el.id}>
+                                <ItemCard {...el} addToCard={() => dispatch(addItemToBasket(el))} />
+                            </NavLink>
+                        )}
+                    </div>
+                </>)
+            }
+
         </CenteringContainer>
     )
 }
