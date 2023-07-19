@@ -21,13 +21,13 @@ export const BasketPage = () => {
     const decreaseItemCountHandler = (item) => {
         dispatch(decreaseItemCount(item));
         dispatch(countTotalItems());
-        dispatch(countTotalPrice())
+        dispatch(countTotalPrice());
     }
 
     const addItemToBasketHandler = (item) => {
-        dispatch(addItemToBasket(item))
-        dispatch(countTotalPrice())
-        dispatch(countTotalItems())
+        dispatch(addItemToBasket(item));
+        dispatch(countTotalPrice());
+        dispatch(countTotalItems());
     }
 
     dispatch(countTotalPrice())
