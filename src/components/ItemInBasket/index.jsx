@@ -1,5 +1,5 @@
 import styles from './ItemInBasket.module.css';
-import { CloseIcon } from './CloseIcon'
+import { CloseIcon } from './CloseIcon';
 
 export const ItemInBasket = ({
     title,
@@ -7,9 +7,9 @@ export const ItemInBasket = ({
     image,
     discont_price,
     quantity,
-    addItemToBasketHandler,
-    deleteItemHandler,
-    decreaseItemCountHandler
+    addQuantityToItemHandler,
+    decreaseItemCountHandler,
+    deleteItemHandler
 }) => {
 
     return (
@@ -21,7 +21,7 @@ export const ItemInBasket = ({
             <div className={styles.counter}>
                 <button onClick={decreaseItemCountHandler} className={styles.counterButton}>-</button>
                 <p className={styles.quantity}>{quantity}</p>
-                <button onClick={addItemToBasketHandler} className={styles.counterButton}>+</button>
+                <button onClick={addQuantityToItemHandler} className={styles.counterButton}>+</button>
 
             </div>
             <>

@@ -10,7 +10,13 @@ export const ProductPage = () => {
     const { data, isLoading, error } = useGetOneProductByCategoryQuery(id);
     const dispatch = useDispatch();
 
-    (error) && (<div>Error: {error.message}</div>);
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
 
     const responseData = data && data[0];
 

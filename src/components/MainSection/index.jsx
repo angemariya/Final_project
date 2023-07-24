@@ -1,6 +1,6 @@
+import { NavLink } from 'react-router-dom'
 import styles from './MainSection.module.css'
 import picture from '../../images/MainPage-Bushes.png'
-import { NavLink } from 'react-router-dom'
 
 export const MainSection = () => {
     return (

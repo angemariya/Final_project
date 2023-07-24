@@ -13,7 +13,13 @@ export const SalePage = () => {
     const { data, error, isLoading } = useGetAllSaleQuery();
     const dispatch = useDispatch();
 
-    (error) && (<div>Error: {error.message}</div>);
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
 
     const filteredData = (data && data.filter(el => el.discont_price !== null))
 
@@ -25,7 +31,7 @@ export const SalePage = () => {
         <CenteringContainer>
             {isLoading ?
                 (<div>Loading...</div>)
-                :
+                : 
                 (<>
                     <h1 className={styles.header}>Products with sale</h1>
                     <Filtration items={filteredData} setFilteredItems={setFilteredItemsHandler} />

@@ -1,18 +1,10 @@
-import { useState } from 'react';
 import styles from './ItemCard.module.css';
 
-export const ItemCard = ({ id, image, price, discont_price, title, addToCard }) => {
-
-    /*const [hovered, setHovered] = useState(false);
-    const handleMouseEnter = () => setHovered(true);
-    const handleMouseLeave = () => setHovered(false);
-    */
+export const ItemCard = ({ id, image, price, discont_price, title, addToBasketHandler }) => {
     
     return (
         <div
             className={styles.itemContainer}
-            //onMouseEnter={handleMouseEnter}
-            //onMouseLeave={handleMouseLeave}
         >
             <img src={`http://127.0.0.1:3333${image}`} />
             <div>
@@ -27,10 +19,9 @@ export const ItemCard = ({ id, image, price, discont_price, title, addToCard }) 
             </div>
             <p className={styles.title}>{title}</p>
         
-            <button className={styles.addToCardButton} onClick={addToCard}>
+            <button className={styles.addToCardButton} onClick={addToBasketHandler}>
                 Add to card
-            </button>
-            
+            </button>   
         </div>
     )
 }

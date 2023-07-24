@@ -49,4 +49,9 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
+  border: none;
+  padding: 10px;
+  background-color: white;
+  border-radius: 12px;
+  cursor: pointer;
 }

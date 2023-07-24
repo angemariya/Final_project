@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
-import styles from './Filter.module.css'
 import { CustomCheckBox } from './CustomCheckbox';
+import styles from './Filter.module.css'
 
-export const Filtration = ({ items, setFilteredItems }) => {
+export const Filtration = ({onChange}) => {
     const [fromPrice, setFromPrice] = useState();
     const [toPrice, setToPrice] = useState();
     const [sortOrder, setSortOrder] = useState();
     const [discountedOnly, setDiscountedOnly] = useState(false);
-    const [isChecked, setIsChecked] = useState(false);
 
-    useEffect(() => {
+/*    useEffect(() => {
 
-        const filteredItems = isChecked ?
+        const filteredItems = discountedOnly ?
             (items.filter(item => item.discont_price !== null).filter((item) => {
             return (
                 (!fromPrice || ((item.discont_price || item.price) >= Number(fromPrice))) &&
@@ -38,9 +37,15 @@ export const Filtration = ({ items, setFilteredItems }) => {
         })
 
         setFilteredItems(sortedItems)
-    }, [fromPrice, toPrice, sortOrder, isChecked])
+    }, [fromPrice, toPrice, sortOrder, discountedOnly])
+*/
 
-
+    useEffect(()=>{
+        onChange({
+            fromPrice, toPrice, sortOrder, discountedOnly
+            })
+    }, [fromPrice, toPrice, sortOrder, discountedOnly, onChange])
+    
     return (
         <div className={styles.filterMainContainer}>
             <div className={styles.priceContainer}>
@@ -58,16 +63,19 @@ export const Filtration = ({ items, setFilteredItems }) => {
                         checked={discountedOnly}
                         onChange={(e) => {
                             setDiscountedOnly(e.target.checked);
-                            setIsChecked(!isChecked)
                         }}
                     />
-                    <CustomCheckBox isChecked={isChecked} />
+                    <CustomCheckBox discountedOnly={discountedOnly} />
                 </label>
             </div>
             <div>
                 <label className={styles.label}>
                     Sorted:
-                    <select className={styles.input} value={sortOrder} onChange={(e) => setSortOrder(e.target.value)} placeholder="by price">
+                    <select
+                        className={styles.input}
+                        value={sortOrder}
+                        onChange={(e) => setSortOrder(e.target.value)}
+                        placeholder="by price">
                         <option value="default">By default</option>
                         <option value="asc">By ascending</option>
                         <option value="desc">By descending</option>
@@ -76,5 +84,4 @@ export const Filtration = ({ items, setFilteredItems }) => {
             </div>
         </div>
     )
-
 }

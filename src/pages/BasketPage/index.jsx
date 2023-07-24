@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux'
-import styles from './BasketPage.module.css'
+import { useDispatch, useSelector } from 'react-redux';
 import { ItemInBasket } from '../../components/ItemInBasket';
-import { addItemToBasket,
-    countTotalItems,
-    decreaseItemCount,
-    deleteItem,
-    countTotalPrice } from '../../redux/basketSlice'
+import {
+    addQuantityToItem,
+    deleteQuantityToItem,
+    deleteItem
+} from '../../redux/basketSlice';
+import styles from './BasketPage.module.css';
 
 export const BasketPage = () => {
     const totalPrice = useSelector((state) => state.basket.totalPrice);
@@ -13,24 +13,16 @@ export const BasketPage = () => {
     const dispatch = useDispatch();
 
     const deleteItemHandler = (item) => {
-        dispatch(deleteItem(item))
-        dispatch(countTotalPrice())
-        dispatch(countTotalItems())
-    }
+        dispatch(deleteItem(item));
+    };
+
+    const addQuantityToItemHandler = (item) => {
+        dispatch(addQuantityToItem(item));
+    };
 
     const decreaseItemCountHandler = (item) => {
-        dispatch(decreaseItemCount(item));
-        dispatch(countTotalItems());
-        dispatch(countTotalPrice());
-    }
-
-    const addItemToBasketHandler = (item) => {
-        dispatch(addItemToBasket(item));
-        dispatch(countTotalPrice());
-        dispatch(countTotalItems());
-    }
-
-    dispatch(countTotalPrice())
+        dispatch(deleteQuantityToItem(item));
+    };
 
     return (
         <main className={styles.basketPage}>
@@ -39,9 +31,9 @@ export const BasketPage = () => {
                     <ItemInBasket
                         key={item.id}
                         {...item}
+                        addQuantityToItemHandler={() => addQuantityToItemHandler(item)}
                         deleteItemHandler={() => deleteItemHandler(item)}
                         decreaseItemCountHandler={() => decreaseItemCountHandler(item)}
-                        addItemToBasketHandler={()=>addItemToBasketHandler(item)}
                     />
                 ))}
             </div>

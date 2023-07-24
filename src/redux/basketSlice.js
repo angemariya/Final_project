@@ -6,36 +6,50 @@ const initialState = {
     totalItems: 0,
 }
 
-const basketSlice = createSlice({
+const calculateTotal = (state) =>
+    state.products.reduce((acc, el) => el.price * el.quantity + acc, 0);
+  
+
+
+export const basketSlice = createSlice({
     name: 'basket',
     initialState,
     reducers: {
         addItemToBasket: (state, action) => {
-            const productById = state.products.find(el => el.id === action.payload.id)
-            productById
-                ? productById.quantity++
-                : state.products.push({ ...action.payload, quantity: 1 })
+            state.products = state.products.find(({ id }) => id === action.payload.id) === undefined
+                ? [...state.products, { ...action.payload, quantity: 1 }]
+                : [...state.products.map((el) => ({ ...el, quantity: el.quantity + 1 }))];
+            state.totalPrice = calculateTotal(state);
         },
         deleteItem: (state, action) => {
-            state.products = state.products.filter(el => el.id !== action.payload.id)
+            state.products = [...state.products.filter(el => el.id !== action.payload.id)];
+            state.totalPrice = calculateTotal(state);
         },
-        countTotalPrice: (state) => {
-            state.totalPrice = state.products.reduce((total, el) => el.price * el.quantity + total, 0)
+        addQuantityToItem: (state, action) => {
+            state.products = [
+                ...state.products.map((el) =>
+                    el.id === action.payload.id
+                        ? { ...el, quantity: el.quantity + 1 }
+                        : el),
+            ];
+            state.totalPrice = calculateTotal(state);
         },
-        countTotalItems: (state) => { state.totalItems = state.products.length },
-        decreaseItemCount: (state, action) => {
-            const productById = state.products.find(({ id }) => id === action.payload.id);
-            const index = state.products.findIndex(el => el.id === action.payload.id);
-            productById.quantity > 1 ? productById.quantity-- : state.products.splice(index, 1)
-
-        }
+        deleteQuantityToItem: (state, action) => {
+            state.products = [
+                ...state.products.map((el) =>
+                    el.id !== action.payload.id || el.quantity === 1
+                        ? el
+                        : { ...el, quantity: el.quantity - 1 }
+                ),
+            ];
+            state.totalPrice = calculateTotal(state);
+        },
     }
-})
+});
 
 export const {
     addItemToBasket,
-    countTotalItems,
-    decreaseItemCount,
+    addQuantityToItem,
     deleteItem,
-    countTotalPrice } = basketSlice.actions;
+    deleteQuantityToItem } = basketSlice.actions;
 export const basketReducer = basketSlice.reducer;

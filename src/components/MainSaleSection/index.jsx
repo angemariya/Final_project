@@ -1,14 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import { useGetAllSaleQuery } from '../../redux/apiSlice';
-import styles from './MainSaleSection.module.css';
 import { CenteringContainer } from '../CenteringContainer';
+import styles from './MainSaleSection.module.css';
 
 export const MainSaleSection = () => {
 
     const { data, error, isLoading } = useGetAllSaleQuery();
 
-    (isLoading) && (<div>Loading...</div>);
-    (error) && (<div>Error: {error.message}</div>);
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
     const filteredData = (data && data.filter(el => el.discont_price !== null).slice(0, 3))
 
     return (
