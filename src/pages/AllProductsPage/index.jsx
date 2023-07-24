@@ -12,7 +12,7 @@ import styles from './AllProductsPage.module.css';
 export const AllProductsPage = () => {
 
     const [newData, setNewData] = useState();
-    const { data, error, isLoading } = useGetAllProductsQuery();
+    const { data, isLoading, error } = useGetAllProductsQuery();
     const dispatch = useDispatch();
 
     const addToBasketHandler = (event, el) => {

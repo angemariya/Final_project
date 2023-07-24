@@ -12,10 +12,8 @@ export const CategoryPage = () => {
     const { data, error, isLoading } = useGetOneCategoryQuery(id);
 
     const onFilterChanged = useCallback((filterObj) => {
-        setNewData(ApplyFilter(data || [], filterObj))
+        setNewData(ApplyFilter(data.data || [], filterObj))
     }, [data])
-
-    console.log(data);
 
     return (
         <CenteringContainer>

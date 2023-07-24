@@ -7,7 +7,7 @@ export const ItemCard = ({ id, image, price, discont_price, title, addToBasketHa
             className={styles.itemContainer}
         >
             <img src={`http://127.0.0.1:3333${image}`} />
-            <div>
+            <div className={styles.priceContainer}>
                 {(discont_price) ?
                     (<>
                         <p className={styles.mainPrice}>{discont_price} $</p>
