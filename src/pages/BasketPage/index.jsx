@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { ItemInBasket } from '../../components/ItemInBasket';
 import {
     addQuantityToItem,
     deleteQuantityToItem,
     deleteItem
 } from '../../redux/basketSlice';
+import { Arrowright } from './Arrowright';
 import styles from './BasketPage.module.css';
 
 export const BasketPage = () => {
@@ -26,7 +28,9 @@ export const BasketPage = () => {
 
     return (
         <main className={styles.basketPage}>
+
             <div className={styles.basketItemsWrapper}>
+                <NavLink className={styles.backButton} to='/products/all'><span>Back to the store </span><Arrowright /></NavLink>
                 {returnedValue.map(item => (
                     <ItemInBasket
                         key={item.id}
