@@ -1,8 +1,8 @@
 import { NavLink, useParams } from 'react-router-dom';
 import { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { useGetOneCategoryQuery } from '../../redux/apiSlice';
 import { addItemToBasket } from '../../redux/basketSlice';
-import { useDispatch } from 'react-redux';
 import { CenteringContainer } from '../../components/CenteringContainer';
 import { ItemCard } from '../../components/ItemCard'
 import { Filtration } from '../../components/Filtration';

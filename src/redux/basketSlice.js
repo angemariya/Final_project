@@ -8,7 +8,6 @@ const initialState = {
 
 const calculateTotal = (state) =>
     state.products.reduce((acc, el) => el.price * el.quantity + acc, 0);
-  
 
 
 export const basketSlice = createSlice({
@@ -20,10 +19,12 @@ export const basketSlice = createSlice({
                 ? [...state.products, { ...action.payload, quantity: 1 }]
                 : [...state.products.map((el) => ({ ...el, quantity: el.quantity + 1 }))];
             state.totalPrice = calculateTotal(state);
+            state.totalItems++;
         },
         deleteItem: (state, action) => {
             state.products = [...state.products.filter(el => el.id !== action.payload.id)];
             state.totalPrice = calculateTotal(state);
+            state.totalItems > 0 && state.totalItems-- ;
         },
         addQuantityToItem: (state, action) => {
             state.products = [
@@ -33,6 +34,7 @@ export const basketSlice = createSlice({
                         : el),
             ];
             state.totalPrice = calculateTotal(state);
+            
         },
         deleteQuantityToItem: (state, action) => {
             state.products = [

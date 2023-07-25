@@ -14,13 +14,15 @@ export const SalePage = () => {
     const { data, error, isLoading } = useGetAllSaleQuery();
     const dispatch = useDispatch();
 
+    const filteredData = data && data.filter(el=> el.discont_price !== null)
+
     const addToBasketHandler = (event, el) => {
         event.preventDefault();
         dispatch(addItemToBasket(el));
     }
 
     const onFilterChanged = useCallback((filterObj) => {
-        setNewData(ApplyFilter(data || [], filterObj))
+        setNewData(ApplyFilter(filteredData || [], filterObj))
     }, [data])
 
     return (
