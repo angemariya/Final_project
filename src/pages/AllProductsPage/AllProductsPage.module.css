@@ -1,6 +1,7 @@
 .itemsWrapper {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 1fr;
     grid-gap: 20px;
 }
 
@@ -41,6 +42,7 @@
     font-size: 16px;
     font-weight: 500;
     padding: 0 10px;
+    height: 54px;
 }
 
 .itemContainer {

@@ -26,6 +26,7 @@ a {
 img {
   max-width: 100%;
   height: auto;
+  margin: auto;
 }
 
 @media screen and (width < 900px) {
