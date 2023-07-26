@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 
 export const Header = () => {
 
-    const productsInBusket = useSelector(state => state.basket.totalItems);
-
+    const productsInBusket = useSelector(state => state.basket.products.length);
 
     return (
         <header>
@@ -18,7 +17,7 @@ export const Header = () => {
                 </div>
                 <nav className={styles.headerListWrapper}>
                     <ul className={styles.headerList}>
-                        <li><NavLink to='/home'>Main Page</NavLink></li>
+                        <li><NavLink to='/home' className={({ isActive }) => isActive ? styles.active : ""} >Main Page</NavLink></li>
                         <li><NavLink to='/products/all'>All Products</NavLink></li>
                         <li><NavLink to='/sale'>All Sale</NavLink></li>
                     </ul>

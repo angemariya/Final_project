@@ -46,4 +46,5 @@
     max-width: 100%;
     min-height: 200px;
     overflow: hidden;
+    object-fit: cover;
 }

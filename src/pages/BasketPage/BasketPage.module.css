@@ -29,9 +29,8 @@
 }
 
 .priceWrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
     margin-bottom: 49px;
 }
 
@@ -43,6 +42,7 @@
 .price {
     font-size: 32px;
     font-weight: 600;
+    text-align: end;
 }
 
 .dollarSign {
@@ -78,8 +78,15 @@
     align-items: center;
     align-self: end;
     padding-bottom: 34px;
+    border: none;
+    background: none;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .backButton span {
- margin-right: 15px;
+    margin-right: 15px;
 }

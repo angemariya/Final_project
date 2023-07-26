@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ItemInBasket } from '../../components/ItemInBasket';
 import {
     addQuantityToItem,
@@ -10,9 +10,13 @@ import { Arrowright } from './Arrowright';
 import styles from './BasketPage.module.css';
 
 export const BasketPage = () => {
+
+    const totalDiscount = useSelector((state) => state.basket.totalDiscount);
+    const totalItems = useSelector((state) => state.basket.totalItems);
     const totalPrice = useSelector((state) => state.basket.totalPrice);
     const returnedValue = useSelector((state) => state.basket.products);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const deleteItemHandler = (item) => {
         dispatch(deleteItem(item));
@@ -30,7 +34,7 @@ export const BasketPage = () => {
         <main className={styles.basketPage}>
 
             <div className={styles.basketItemsWrapper}>
-                <NavLink className={styles.backButton} to='/products/all'><span>Back to the store </span><Arrowright /></NavLink>
+                <button className={styles.backButton} onClick={()=>navigate(-1)}><span>Back to the store </span><Arrowright /></button>
                 {returnedValue.map(item => (
                     <ItemInBasket
                         key={item.id}
@@ -45,7 +49,16 @@ export const BasketPage = () => {
             <div className={styles.orderDetails}>
                 <p className={styles.header}>Order details</p>
                 <div className={styles.priceWrapper}>
-                    <p className={styles.total}>Total</p>
+                    <p className={styles.total}>Total items:</p>
+                    <p className={styles.price}>
+                        {totalItems}
+                    </p>
+                    <p className={styles.total}>Total discount:</p>
+                    <p className={styles.price}>
+                        {Math.floor(totalDiscount)}
+                        <span className={styles.dollarSign}>$</span>
+                    </p>
+                    <p className={styles.total}>Total: </p>
                     <p className={styles.price}>
                         {totalPrice}
                         <span className={styles.dollarSign}>$</span>
