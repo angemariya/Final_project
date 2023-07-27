@@ -6,6 +6,32 @@
     margin: 0 auto;
 }
 
+.busket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.counter {
+    background: #339933;
+    color: white;
+    border-radius: 50%;
+    padding: 1px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+}
+
 .headerList {
     display: flex;
     list-style: none;

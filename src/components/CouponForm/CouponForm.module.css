@@ -9,18 +9,19 @@
 
 .textWrapper {
     color: #FFF;
-    font-size: 90px;
+    font-size: 50px;
     font-weight: 700;
     margin-bottom: 46px;
 }
 
 .bigtextWrapper{
-    font-size: 120px;
+    font-size: 90px;
 }
 
 .imageWrapper img {
     max-width: 100%;
     height: auto;
+    margin: 0;
 }
 
 .inputWrapper {
@@ -37,6 +38,11 @@
     font-size: 18px;
     font-family: Montserrat;
     font-weight: 600;
+}
+
+.formWrapper{
+    display: flex;
+    flex-direction: column;
 }
 
 .form {

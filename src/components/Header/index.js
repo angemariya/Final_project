@@ -13,15 +13,17 @@ export const Header = () => {
             <div className={styles.headerMain}>
                 <div className={styles.logoWrapper}>
                     <img className={styles.logo} src={logo} alt="Logo"></img>
-                    <NavLink to={`/categories`} className={styles.grnButton}>Catalog</NavLink>
+                    <NavLink to={'/categories'} className={styles.grnButton}>Catalog</NavLink>
                 </div>
                 <nav className={styles.headerListWrapper}>
                     <ul className={styles.headerList}>
                         <li><NavLink to='/home' className={({ isActive }) => isActive ? styles.active : ""} >Main Page</NavLink></li>
-                        <li><NavLink to='/products/all'>All Products</NavLink></li>
-                        <li><NavLink to='/sale'>All Sale</NavLink></li>
+                        <li><NavLink to='/products/all' className={({ isActive }) => isActive ? styles.active : ""}>All Products</NavLink></li>
+                        <li><NavLink to='/sale' className={({ isActive }) => isActive ? styles.active : ""}>All Sale</NavLink></li>
                     </ul>
-                    <NavLink to='/basket'><img src={busket} /><span>{productsInBusket}</span></NavLink>
+                    <NavLink className={styles.busket} to='/basket'>
+                        <img src={busket} alt="busket" />
+                        <span className={styles.counter}>{productsInBusket}</span></NavLink>
                 </nav>
             </div>
         </header>

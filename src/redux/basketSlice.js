@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const writeToLS = (arg) =>
+    localStorage.setItem('basket', JSON.stringify(arg));
+
+const readFromLS = (key) =>
+    JSON.parse(localStorage.getItem(key)) || [];
+
 const initialState = {
-    products: [],
+    products: readFromLS('basket'),
     totalPrice: 0,
     totalItems: 0,
     totalDiscount: 0,
@@ -19,7 +25,7 @@ const calculateTotalDiscount = (state) =>
 
 export const basketSlice = createSlice({
     name: 'basket',
-    initialState,
+    initialState ,
     reducers: {
         addItemToBasket: (state, action) => {
             const isNew = state.products.find(({ id }) => id === action.payload.id) === undefined;
@@ -29,12 +35,14 @@ export const basketSlice = createSlice({
             state.totalPrice = calculateTotal(state);
             state.totalDiscount = calculateTotalDiscount(state);
             state.totalItems = calculateTotalItems(state);
+            writeToLS(state.products)
         },
         deleteItem: (state, action) => {
             state.products = [...state.products.filter(el => el.id !== action.payload.id)];
             state.totalPrice = calculateTotal(state);
             state.totalDiscount = calculateTotalDiscount(state);
             state.totalItems = calculateTotalItems(state);
+            writeToLS(state.products)
         },
         addQuantityToItem: (state, action) => {
             state.products = [
@@ -46,6 +54,7 @@ export const basketSlice = createSlice({
             state.totalPrice = calculateTotal(state);
             state.totalDiscount = calculateTotalDiscount(state);
             state.totalItems = calculateTotalItems(state);
+            writeToLS(state.products)
             
         },
         deleteQuantityToItem: (state, action) => {
@@ -59,6 +68,7 @@ export const basketSlice = createSlice({
             state.totalPrice = calculateTotal(state);
             state.totalDiscount = calculateTotalDiscount(state);
             state.totalItems = calculateTotalItems(state);
+            writeToLS(state.products)
         },
     }
 });
