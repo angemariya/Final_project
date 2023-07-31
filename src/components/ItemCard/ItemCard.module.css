@@ -5,6 +5,10 @@
     font-weight: 500;
 }
 
+.cardImage {
+    margin: auto;
+}
+
 .priceContainer {
     display: flex;
     align-items: center;

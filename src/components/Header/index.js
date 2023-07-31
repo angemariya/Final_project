@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import logo from '../../images/logo.svg';
 import busket from '../../images/busket.svg';
 import { useSelector } from "react-redux";
+import { BurgerMenu } from "../BurgerMenu";
 
 export const Header = () => {
 
@@ -11,6 +12,7 @@ export const Header = () => {
     return (
         <header>
             <div className={styles.headerMain}>
+                <BurgerMenu />
                 <div className={styles.logoWrapper}>
                     <img className={styles.logo} src={logo} alt="Logo"></img>
                     <NavLink to={'/categories'} className={styles.grnButton}>Catalog</NavLink>

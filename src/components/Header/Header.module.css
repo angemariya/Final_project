@@ -85,3 +85,19 @@
     margin-right: 30px;
 }
 }
+
+@media screen and (width < 750px) {
+
+    .headerList {
+        display: none;
+    }
+
+    .headerMain {
+        align-items: center;
+    }
+
+    .logo {
+        display: none;
+    }
+
+}

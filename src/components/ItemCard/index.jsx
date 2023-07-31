@@ -6,7 +6,7 @@ export const ItemCard = ({ id, image, price, discont_price, title, addToBasketHa
         <div
             className={styles.itemContainer}
         >
-            <img src={`http://127.0.0.1:3333${image}`} />
+            <img className={styles.cardImage} src={`http://127.0.0.1:3333${image}`} />
             <div className={styles.priceContainer}>
                 {(discont_price) ?
                     (<>

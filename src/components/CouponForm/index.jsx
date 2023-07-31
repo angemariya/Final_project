@@ -32,7 +32,7 @@ export const CouponForm = () => {
                     <Controller
                         name="phone"
                         control={control}
-                        defaultValue="+49"
+                        
                         render={({ field, fieldState: { error } }) => (
                             <>
                                 <input
