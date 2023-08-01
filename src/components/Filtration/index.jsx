@@ -2,59 +2,32 @@ import { useState, useEffect } from 'react';
 import { CustomCheckBox } from './CustomCheckbox';
 import styles from './Filter.module.css'
 
-export const Filtration = ({onChange}) => {
+export const Filtration = ({onChange, hideDiscountFilter = false}) => {
     const [fromPrice, setFromPrice] = useState();
     const [toPrice, setToPrice] = useState();
     const [sortOrder, setSortOrder] = useState();
     const [discountedOnly, setDiscountedOnly] = useState(false);
 
-/*    useEffect(() => {
-
-        const filteredItems = discountedOnly ?
-            (items.filter(item => item.discont_price !== null).filter((item) => {
-            return (
-                (!fromPrice || ((item.discont_price || item.price) >= Number(fromPrice))) &&
-                (!toPrice || ((item.discont_price || item.price) <= Number(toPrice))) 
-            )
-            })
-            )
-            :
-            (items.filter((item) => {
-            return (
-                (!fromPrice || ((item.discont_price || item.price) >= Number(fromPrice))) &&
-                (!toPrice || ((item.discont_price || item.price) <= Number(toPrice)))
-            )
-        })
-        )
- 
-        const sortedItems = filteredItems && filteredItems.sort((a, b) => {
-            if (sortOrder === 'asc') {
-                return a.price - b.price
-            } else if (sortOrder === 'desc') {
-                return b.price - a.price
-            }
-            return 0
-        })
-
-        setFilteredItems(sortedItems)
-    }, [fromPrice, toPrice, sortOrder, discountedOnly])
-*/
-
     useEffect(()=>{
         onChange({
-            fromPrice, toPrice, sortOrder, discountedOnly
+            fromPrice,
+            toPrice,
+            sortOrder,
+            discountedOnly: hideDiscountFilter || discountedOnly,
             })
-    }, [fromPrice, toPrice, sortOrder, discountedOnly, onChange])
+    }, [fromPrice, toPrice, sortOrder, discountedOnly, discountedOnly, onChange])
     
     return (
         <div className={styles.filterMainContainer}>
             <div className={styles.priceContainer}>
-                <label className={styles.label}>Price
-                    <input className={styles.input} type="number" value={fromPrice ?? ''} onChange={(e) => setFromPrice(e.target.value)} placeholder="from" />
-                    <input className={styles.input} type="number" value={toPrice ?? ''} onChange={(e) => setToPrice(e.target.value)} placeholder="to" />
+                <label className={styles.label}>
+                    <span className={styles.price}>Price</span>
+                    <input className={styles.inputFrom} type="number" value={fromPrice ?? ''} onChange={(e) => setFromPrice(e.target.value)} placeholder="from" />
+                    <input className={styles.inputTo} type="number" value={toPrice ?? ''} onChange={(e) => setToPrice(e.target.value)} placeholder="to" />
                 </label>
             </div>
             <div className={styles.discountContainer}>
+                { !hideDiscountFilter &&  
                 <label className={styles.label} htmlFor="check">
                     Discounted items
                     <input
@@ -66,13 +39,14 @@ export const Filtration = ({onChange}) => {
                         }}
                     />
                     <CustomCheckBox discountedOnly={discountedOnly} />
-                </label>
+                    </label>
+                }
             </div>
             <div>
                 <label className={styles.label}>
                     Sorted:
                     <select
-                        className={styles.input}
+                        className={styles.inputSelect}
                         value={sortOrder}
                         onChange={(e) => setSortOrder(e.target.value)}
                         placeholder="by price">

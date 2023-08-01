@@ -32,7 +32,7 @@ export const SalePage = () => {
                 : error ? (<h2>Error</h2>)
                 : (<>
                     <h1 className={styles.header}>Products with sale</h1>
-                    <Filtration onChange={onFilterChanged} />
+                    <Filtration onChange={onFilterChanged} hideDiscountFilter/>
                     <div className={styles.itemsWrapper}>
                         {newData && newData.map(el =>
                             <NavLink to={`/products/${el.id}`} key={el.id}>

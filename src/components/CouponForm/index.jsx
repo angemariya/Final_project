@@ -19,9 +19,6 @@ export const CouponForm = () => {
 
     const disabled = isLoading || isSuccess;
 
-    isSuccess && console.log('Success. Your phone number was submitted');
-    isError && console.error('Error occurred while submitting form data');
-
     return (
         <div className={styles.wrapper}>
             <img className={styles.imageWrapper} src={gnome} alt="gnome" />
@@ -37,9 +34,10 @@ export const CouponForm = () => {
                             <>
                                 <input
                                     disabled={disabled}
+                                    placeholder="+49"
                                     {...field}
                                     className={styles.input}
-                                    type="tel"
+                                    type='phone'
                                     onChange={handlePhoneChange}
                                     maxLength={14}
                                     minLength={14}
@@ -48,13 +46,14 @@ export const CouponForm = () => {
                             </>
                         )}
                     />
+                    {isSuccess && <div className={styles.message}>Success. Your phone number was submitted.</div>}
+                    {isError && <div className={styles.message}>Error occurred while submitting form data. Please try later.</div>}
                     <button
                         disabled={disabled}
                         className={styles.formButton}
                         type="submit">Get a discount</button>
                 </form>
             </div>
-
         </div>
     );
 };

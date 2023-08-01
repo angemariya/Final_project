@@ -48,3 +48,15 @@
     overflow: hidden;
     object-fit: cover;
 }
+
+@media only screen and (min-width: 750px) and (max-width: 1023px) {
+    .itemImage {
+        
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .catalogOneItemWrapper {
+        align-items: flex-start;
+    }
+}

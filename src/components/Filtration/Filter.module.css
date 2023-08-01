@@ -1,9 +1,15 @@
 .label {
     font-size: 20px;
     font-weight: 600;
-    display: flex;
+    display: grid;
+    grid-template-areas: 
+    "Price From To";
     align-items: center;
     gap: 20px;
+}
+
+.price {
+    grid-area: Price;
 }
 
 .filterMainContainer {
@@ -20,7 +26,27 @@
     align-items: center;
 }
 
-.input {
+.inputFrom {
+    grid-area: From;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 7px;
+    border: 1px solid #000; 
+    padding: 10px;
+}
+
+.inputTo {
+    grid-area: To;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 7px;
+    border: 1px solid #000; 
+    padding: 10px;
+}
+
+.inputSelect {
     font-family: Montserrat;
     font-size: 16px;
     font-weight: 500;
@@ -37,4 +63,14 @@ input[type="checkbox"] {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+
+@media only screen and (max-width: 750px) {
+    .label {
+        grid-template-areas: 
+        "Price From"
+        "Price To"
+        ;
+    }
 }

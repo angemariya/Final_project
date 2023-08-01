@@ -91,8 +91,15 @@
     margin-right: 15px;
 }
 
-@media screen and (width < 750px) {
+@media only screen and (min-width: 750px) and (max-width: 1260px) {
     .basketPage {
         grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .basketPage {
+        grid-template-columns: 1fr;
+        padding-top: 150px;
     }
 }

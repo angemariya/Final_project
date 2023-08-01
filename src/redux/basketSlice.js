@@ -14,13 +14,13 @@ const initialState = {
 }
 
 const calculateTotal = (state) =>
-    state.products.reduce((acc, el) => (el.discont_price ? el.discont_price : el.price) * el.quantity + acc, 0);
+    state.products.reduce((acc, el) => (el.discont_price ? el.discont_price : el.price) * el.quantity + acc, 0).toFixed(2);
 
 const calculateTotalItems = (state) =>
     state.products.reduce((acc, el) => el.quantity + acc, 0);
 
 const calculateTotalDiscount = (state) => 
-        state.products.reduce((acc, el) => (el.discont_price ? (el.price - el.discont_price) : 0) * el.quantity + acc, 0).toFixed(2);
+        state.products.reduce((acc, el) => (el.discont_price ? (el.price - el.discont_price) : 0) * el.quantity + acc, 0).toFixed(1);
 
 
 export const basketSlice = createSlice({

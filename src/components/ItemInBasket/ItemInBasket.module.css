@@ -1,11 +1,14 @@
 .itemWrapper {
     display: grid;
-    grid-template-columns: 192px 1fr;
+    grid-template-columns: auto 2fr 1fr 1fr 30px;
     grid-template-rows: auto auto auto;
+    grid-template-areas:
+    "image title . . x"
+    "image . priceDiscount oldPrice ."
+    "image counter . . .";
     gap: 30px;
     border-top: 1px solid #A7A7A7;
     padding: 40px 0;
-    width: 100%;
 }
 
 .itemWrapper + .itemWrapper {
@@ -13,9 +16,10 @@
 }
 
 .imageWrapper {
-    grid-row: 1 / span 3;
+    grid-area: image;
     border: 1px solid transparent;
     border-radius: 12px;
+    width: 194px;
     overflow: hidden;
 }
 
@@ -25,15 +29,14 @@
 }
 
 .title {
-    grid-column: 2;
-    grid-row: 1;
+    grid-area: title;
+    grid-column: auto;
     color: #3A3A3A;
     font-size: 18px;
 }
 
 .counter {
-    grid-column: 2;
-    grid-row: 3;
+    grid-area: counter;
     display: flex;
     align-items: center;
     border: 1px solid #000000;
@@ -58,8 +61,7 @@
 }
 
 .discountPrice {
-    grid-column: 3;
-    grid-row: 2;
+    grid-area: priceDiscount;
     font-size: 40px;
     font-weight: 600;
     align-self: center;
@@ -71,8 +73,7 @@
 }
 
 .oldPrice {
-    grid-column: 4;
-    grid-row: 2;
+    grid-area: oldPrice;
     text-decoration: line-through;
     color: #8B8B8B;
     font-size: 20px;
@@ -85,7 +86,7 @@
 }
 
 .closeButton {
-    grid-column: 5;
+    grid-area: x;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -93,12 +94,32 @@
     align-self: start;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .itemWrapper {
-        flex-direction: column;
+@media only screen and (min-width: 750px) and (max-width: 1023px) {
+/*    .itemWrapper {
+        grid-template-areas: 
+        "image x"
+        "title ."
+        "counter ."
+        "priceDiscount oldPrice ."
+        ;
     }
+*/
 }
 
-@media only screen and (max-width: 767px) {
-  /* стили для смартфонов */
+@media only screen and (max-width: 750px) {
+  .itemWrapper {
+        grid-template-areas: 
+        "image x"
+        "title ."
+        "priceDiscount ."
+        "oldPrice ."
+        "counter ."
+        ;
+        grid-template-columns: auto 30px;
+        gap: 10px;
+    }
+
+    .title {
+        width: auto;
+    } 
 }

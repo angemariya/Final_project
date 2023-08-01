@@ -77,3 +77,23 @@
     font-weight: 600;
     line-height: 130%;
 }
+
+@media only screen and (min-width: 750px) and (max-width: 1023px) {
+    .phoneNumber {
+        font-size: 40px;
+    }
+
+    .addressText {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .phoneNumber {
+        font-size: 30px;
+    }
+
+    .addressText {
+        font-size: 30px;
+    }
+}
