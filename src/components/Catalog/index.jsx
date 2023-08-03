@@ -16,7 +16,20 @@ export const Catalog = () => {
 
             {isLoading ? <h2>Loading...</h2> :
                 isError ? <h2>Error: {error}</h2> :
-                    <Carousel cols={4} rows={1} gap={30} loop containerStyle={{ marginBottom: "90px" }}>
+                    <Carousel
+                        cols={4} rows={1} gap={30} loop
+                        mobileBreakpoint={767}
+                        containerStyle={{ marginBottom: "90px" }}
+                        responsiveLayout={[{
+                            breakpoint: 1023,
+                            cols: 3,
+                            rows: 1,
+                            gap: 10,
+                            loop: true,
+                            autoplay: 3000
+                        }]}
+                    >
+                                    
                         {data && data.map(el =>
                             <Carousel.Item className={styles.catalogOneItemWrapper} key={el.id}>
                                 <NavLink to={`/categories/${el.id}`} key={el.id}>
