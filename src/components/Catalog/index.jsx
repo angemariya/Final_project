@@ -1,6 +1,7 @@
 import { CenteringContainer } from "../CenteringContainer";
 import { useGetAllCategoriesQuery } from '../../redux/apiSlice';
 import { NavLink } from "react-router-dom";
+import Carousel from 'better-react-carousel';
 import styles from './Catalog.module.css';
 
 export const Catalog = () => {
@@ -13,16 +14,16 @@ export const Catalog = () => {
                 <div className={styles.descriptionLabel}>All categories</div>                    
             </div>
 
-            <div className={styles.catalogItemsWrapper}>
-                {data && data.map(el => 
-                    <NavLink to={`/categories/${el.id}`} key={el.id}>
-                        <div className={styles.catalogOneItemWrapper}>
+            <Carousel cols={4} rows={1} gap={30} loop containerStyle={{marginBottom: "90px"}}>
+                {data && data.map(el =>
+                    <Carousel.Item className={styles.catalogOneItemWrapper}>
+                        <NavLink to={`/categories/${el.id}`} key={el.id}>
                             <img className={styles.itemImage} src={`http://127.0.0.1:3333${el.image}`} alt={el.title} />
                             <p className={styles.catalogItemLabel}>{ el.title }</p>
-                        </div>    
-                    </NavLink>
+                        </NavLink>
+                    </Carousel.Item>
                 )}
-            </div>
+            </Carousel>
         </CenteringContainer>
     )
 }

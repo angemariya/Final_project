@@ -26,25 +26,27 @@
     font-size: 18px;
     font-weight: 600;
     line-height: 130%;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .catalogItemsWrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding-bottom: 90px;
+    align-items: center;
 }
 
 .catalogOneItemWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 90px;
 }
 
 .itemImage{
     max-width: 100%;
-    min-height: 200px;
+    min-height: 350px;
     overflow: hidden;
     object-fit: cover;
 }
