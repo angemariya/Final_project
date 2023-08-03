@@ -6,26 +6,28 @@ const writeToLS = (arg) =>
 const readFromLS = (key) =>
     JSON.parse(localStorage.getItem(key)) || [];
 
-const initialState = {
-    products: readFromLS('basket'),
-    totalPrice: 0,
-    totalItems: 0,
-    totalDiscount: 0,
-}
+const productsFromLS = readFromLS('basket');
 
 const calculateTotal = (state) =>
-    state.products.reduce((acc, el) => (el.discont_price ? el.discont_price : el.price) * el.quantity + acc, 0).toFixed(2);
+state.products.reduce((acc, el) => (el.discont_price ? el.discont_price : el.price) * el.quantity + acc, 0).toFixed(2);
 
 const calculateTotalItems = (state) =>
-    state.products.reduce((acc, el) => el.quantity + acc, 0);
+state.products.reduce((acc, el) => el.quantity + acc, 0);
 
 const calculateTotalDiscount = (state) => 
-        state.products.reduce((acc, el) => (el.discont_price ? (el.price - el.discont_price) : 0) * el.quantity + acc, 0).toFixed(1);
+state.products.reduce((acc, el) => (el.discont_price ? (el.price - el.discont_price) : 0) * el.quantity + acc, 0).toFixed(1);
 
+
+const initialState = {
+    products: productsFromLS,
+    totalPrice: calculateTotal({products: productsFromLS}),
+    totalItems: calculateTotalItems({products: productsFromLS}),
+    totalDiscount: calculateTotalDiscount({products: productsFromLS}),
+}
 
 export const basketSlice = createSlice({
     name: 'basket',
-    initialState ,
+    initialState,
     reducers: {
         addItemToBasket: (state, action) => {
             const isNew = state.products.find(({ id }) => id === action.payload.id) === undefined;

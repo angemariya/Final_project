@@ -10,19 +10,20 @@ import { ApplyFilter } from '../../utils/applyFilter';
 import styles from './CategoryPage.module.css';
 
 export const CategoryPage = () => {
+    
     const [ newData, setNewData ] = useState();
     const { id } = useParams();
     const { data, error, isLoading } = useGetOneCategoryQuery(id);
     const dispatch = useDispatch();
 
-    const onFilterChanged = useCallback((filterObj) => {
-        setNewData(ApplyFilter(data.data || [], filterObj))
-    }, [data])
-
     const addToBasketHandler = (event, el) => {
         event.preventDefault();
         dispatch(addItemToBasket(el));
     }
+
+    const onFilterChanged = useCallback((filterObj) => {
+        setNewData(ApplyFilter(data.data || [], filterObj))
+    }, [data])
 
     return (
         <CenteringContainer>

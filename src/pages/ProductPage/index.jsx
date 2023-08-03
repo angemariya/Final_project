@@ -23,18 +23,18 @@ export const ProductPage = () => {
                             <div className={styles.imageWrapper}>
                                 <img src={`http://localhost:3333/${responseData.image}`} />
                             </div>
-                            <div className={styles.priceContainer}>
-                                {
-                                    (responseData.discont_price !== null) ?
-                                        (<div className={styles.priceWithDiscount}>
-                                            <div className={styles.price}>{responseData.discont_price}<span className={styles.dollarSign}>$</span></div>
-                                            <div className={styles.discountPrice}>{responseData.price} <span>$</span> </div>
-                                            <div className={styles.discount}>{Math.floor(100 - (responseData.discont_price / responseData.price / 0.01))}%</div>
-                                        </div>)
-                                        :
-                                        (<>
-                                            <div className={styles.price}>{responseData.price}<span className={styles.dollarSign}>$</span></div>
-                                        </>)
+                            <div className={styles.contentContainer}>
+                                {(responseData.discont_price !== null) ?
+                                    (<div className={styles.priceWithDiscount}>
+                                        <div className={styles.price}>{responseData.discont_price}<span className={styles.dollarSign}>$</span></div>
+                                        <div className={styles.discountPrice}>{responseData.price} <span>$</span> </div>
+                                        <div className={styles.discount}>{Math.floor(100 - (responseData.discont_price / responseData.price / 0.01))}%</div>
+                                    </div>)
+                                    :
+                                    (<div className={styles.price}>
+                                        {responseData.price}
+                                        <span className={styles.dollarSign}>$</span>
+                                    </div>)
                                 }
                                 <button
                                     onClick={() => dispatch(addItemToBasket(responseData))}

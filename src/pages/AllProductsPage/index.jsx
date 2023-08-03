@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useState, useCallback } from 'react';
-import { useGetAllProductsQuery } from '../../redux/apiSlice';
 import { useDispatch } from 'react-redux';
+import { useGetAllProductsQuery } from '../../redux/apiSlice';
 import { addItemToBasket } from '../../redux/basketSlice';
 import { CenteringContainer } from '../../components/CenteringContainer';
 import { ItemCard } from '../../components/ItemCard';

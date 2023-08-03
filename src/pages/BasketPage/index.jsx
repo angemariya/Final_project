@@ -46,12 +46,12 @@ export const BasketPage = () => {
         if (!isValid(phoneNum)) {
             console.log("Please enter a correct phone number. Your number must starts with '+49' and contains 14 numbers");
             return;
-        } 
+        }
         if (!phoneNum) {
             console.log("Please enter your phone number before submit")
             return;
         }
-        
+
         sendData(phoneNum)
     }
 
@@ -74,7 +74,7 @@ export const BasketPage = () => {
                 {isLoading ? <h2>Loading...</h2>
                     : isError ? <h2>Something is going wrong. Please try later</h2>
                         : isSuccess ? <h2>Your phone number has been sent</h2>
-                            :        
+                            :
                             <form className={styles.orderDetails} onSubmit={formSubmitHandler}>
                                 <p className={styles.header}>Order details</p>
                                 <div className={styles.priceWrapper}>

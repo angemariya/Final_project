@@ -21,12 +21,6 @@
     justify-content: space-between;
 }
 
-.priceContainer {
-    /*display: flex;
-    flex-direction: column;
-    gap: 40px;*/
-}
-
 .priceWithDiscount {
     margin-bottom: 40px;
 }
@@ -87,4 +81,23 @@
     letter-spacing: 0.6px;
     font-size: 20px;
     font-weight: 500;
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1023px) {
+    .productWrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .priceWithDiscount{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+    .productWrapper {
+        grid-template-columns: 1fr;
+    }
 }

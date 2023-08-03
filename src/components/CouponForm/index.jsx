@@ -41,6 +41,7 @@ export const CouponForm = () => {
                                     onChange={handlePhoneChange}
                                     maxLength={14}
                                     minLength={14}
+                                    required
                                 />
                                 {error && <span>Phone number is required.</span>}
                             </>

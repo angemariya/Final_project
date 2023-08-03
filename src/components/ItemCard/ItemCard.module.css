@@ -46,6 +46,7 @@
     position: relative;
     box-shadow: 0px 4px 17px 0px rgb(210 220 227 / 36%);
     padding: 10px 0;
+    z-index: 0;
 }
 
 .addToCardButton {
@@ -54,7 +55,7 @@
     top: 55%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 999;
+    z-index: 1;
     border: none;
     padding: 25px 87px;
     border-radius: 21px;

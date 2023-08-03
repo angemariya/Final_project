@@ -1,7 +1,7 @@
 import { CenteringContainer } from "../CenteringContainer";
-import styles from './Catalog.module.css';
 import { useGetAllCategoriesQuery } from '../../redux/apiSlice';
 import { NavLink } from "react-router-dom";
+import styles from './Catalog.module.css';
 
 export const Catalog = () => {
     const { data } = useGetAllCategoriesQuery();
