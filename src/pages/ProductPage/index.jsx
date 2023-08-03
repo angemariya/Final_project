@@ -21,7 +21,7 @@ export const ProductPage = () => {
                         <h1 className={styles.header}>{responseData && responseData.title}</h1>
                         <div className={styles.productWrapper}>
                             <div className={styles.imageWrapper}>
-                                <img src={`http://localhost:3333/${responseData.image}`} />
+                                <img src={`http://localhost:3333/${responseData.image}`} alt="product"/>
                             </div>
                             <div className={styles.contentContainer}>
                                 {(responseData.discont_price !== null) ?

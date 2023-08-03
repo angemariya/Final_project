@@ -8,6 +8,7 @@ import { ItemCard } from '../../components/ItemCard';
 import { Filtration } from '../../components/Filtration';
 import { ApplyFilter } from '../../utils/applyFilter';
 import styles from './AllProductsPage.module.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const AllProductsPage = () => {
 

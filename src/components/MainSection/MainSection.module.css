@@ -1,15 +1,23 @@
 
 .sectionWrapper {
+    min-height: 600px;
     background-color: #A1E2EB;
+    background-image: url('../../images/gardening-tools.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right 70%;
+    display: flex;
 }
 
 .container {
     width: 95%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
+}
+
+.textWrapper {
+    align-self: center;
 }
 
 .wrapper img {

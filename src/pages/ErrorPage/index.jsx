@@ -5,6 +5,8 @@ import picture from "../../images/404.png";
 
 export const ErrorPage = () => {
     const error = useRouteError();
+    console.error(error.status);
+
     return (
         <>
             <Header />

@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom'
 import styles from './MainSection.module.css'
-import picture from '../../images/MainPage-Bushes.png'
 
 export const MainSection = () => {
     return (
@@ -11,7 +10,6 @@ export const MainSection = () => {
                     <p className={styles.text}>New season</p>
                     <NavLink to='/sale' className={styles.buttonSale}>Sale</NavLink>
                 </div>
-            <img src={picture} alt="Bushes" />
             </div>
         </section>
     )

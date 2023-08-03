@@ -18,7 +18,7 @@ export const Catalog = () => {
                 isError ? <h2>Error: {error}</h2> :
                     <Carousel cols={4} rows={1} gap={30} loop containerStyle={{ marginBottom: "90px" }}>
                         {data && data.map(el =>
-                            <Carousel.Item className={styles.catalogOneItemWrapper}>
+                            <Carousel.Item className={styles.catalogOneItemWrapper} key={el.id}>
                                 <NavLink to={`/categories/${el.id}`} key={el.id}>
                                     <img className={styles.itemImage} src={`http://127.0.0.1:3333${el.image}`} alt={el.title} />
                                     <p className={styles.catalogItemLabel}>{el.title}</p>

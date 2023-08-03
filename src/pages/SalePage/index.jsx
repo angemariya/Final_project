@@ -23,7 +23,7 @@ export const SalePage = () => {
 
     const onFilterChanged = useCallback((filterObj) => {
         setNewData(ApplyFilter(filteredData || [], filterObj))
-    }, [data])
+    }, [filteredData])
 
     return (
         <CenteringContainer>
