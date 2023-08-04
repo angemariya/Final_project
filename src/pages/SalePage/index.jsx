@@ -8,8 +8,8 @@ import { Filtration } from '../../components/Filtration';
 import { ItemCard } from '../../components/ItemCard';
 import { ApplyFilter } from '../../utils/applyFilter';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
 import styles from './SalePage.module.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const SalePage = () => {
     const [ newData, setNewData ] = useState();
