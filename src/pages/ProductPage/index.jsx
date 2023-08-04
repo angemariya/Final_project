@@ -12,10 +12,11 @@ export const ProductPage = () => {
     const { data, isLoading, error } = useGetOneProductByCategoryQuery(id);
     const dispatch = useDispatch();
 
-    const addToBasketHandler = (event, el) => {
-        event.preventDefault();
-        dispatch(addItemToBasket(el));
-        toast(`${el.title} added to busket`, {
+    const responseData = data && data[0];
+
+    const addToBasketHandler = () => {
+        dispatch(addItemToBasket(responseData));
+        toast(`${responseData.title} added to busket`, {
             position: "top-right",
             autoClose: 1000,
             hideProgressBar: true,
@@ -26,8 +27,6 @@ export const ProductPage = () => {
             theme: "light",
         })
     }
-
-    const responseData = data && data[0];
 
     return (
         <CenteringContainer>
@@ -54,7 +53,7 @@ export const ProductPage = () => {
                                     </div>)
                                 }
                                 <button
-                                    onClick={addToBasketHandler}
+                                    onClick={()=>addToBasketHandler()}
                                     className={styles.addButton}>
                                     To card
                                 </button>

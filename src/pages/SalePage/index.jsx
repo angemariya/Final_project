@@ -16,7 +16,7 @@ export const SalePage = () => {
     const { data, error, isLoading } = useGetAllSaleQuery();
     const dispatch = useDispatch();
 
-    const filteredData = data && data.filter(el=> el.discont_price !== null)
+    const filteredData = data && data.filter(el=> el.price !== el.discont_price)
 
     const addToBasketHandler = (event, el) => {
         event.preventDefault();

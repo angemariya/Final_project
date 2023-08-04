@@ -25,7 +25,7 @@ export const ItemInBasket = ({
 
             </div>
             <>
-                {discont_price
+                {discont_price !== price
                     ? (
                         <>
                             <span className={styles.discountPrice}>
