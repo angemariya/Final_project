@@ -33,7 +33,7 @@
     font-weight: 500;
     padding: 0 10px;
     max-height: 32px;
-    text-overflow: ellipsis "...";
+    text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }

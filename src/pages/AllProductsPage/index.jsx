@@ -7,6 +7,7 @@ import { CenteringContainer } from '../../components/CenteringContainer';
 import { ItemCard } from '../../components/ItemCard';
 import { Filtration } from '../../components/Filtration';
 import { ApplyFilter } from '../../utils/applyFilter';
+import { ToastContainer, toast } from 'react-toastify';
 import styles from './AllProductsPage.module.css';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -19,6 +20,16 @@ export const AllProductsPage = () => {
     const addToBasketHandler = (event, el) => {
         event.preventDefault();
         dispatch(addItemToBasket(el));
+        toast(`${el.title} added to busket`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
     }
 
     const onFilterChanged = useCallback((filterObj) => {
@@ -42,6 +53,7 @@ export const AllProductsPage = () => {
                         </div>
                     </>
             }
+            <ToastContainer />
         </CenteringContainer>
     )
 }

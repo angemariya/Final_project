@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const apiSlice = createApi({
     reducerPath: 'categories',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:3333/'}), 
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://gardenshop.onrender.com/'}), 
     endpoints: (builder) => ({
         getAllCategories: builder.query({
             query: () => 'categories/all'

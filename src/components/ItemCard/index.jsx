@@ -1,12 +1,12 @@
 import styles from './ItemCard.module.css';
 
-export const ItemCard = ({ id, image, price, discont_price, title, addToBasketHandler }) => {
-    
+export const ItemCard = ({ image, price, discont_price, title, addToBasketHandler }) => {
+
     return (
         <div
             className={styles.itemContainer}
         >
-            <img className={styles.cardImage} src={`http://127.0.0.1:3333${image}`} />
+            <img className={styles.cardImage} src={`https://gardenshop.onrender.com/${image}`} alt="item"/>
             <div className={styles.priceContainer}>
                 {(discont_price) ?
                     (<>
@@ -21,7 +21,7 @@ export const ItemCard = ({ id, image, price, discont_price, title, addToBasketHa
         
             <button className={styles.addToCardButton} onClick={addToBasketHandler}>
                 Add to card
-            </button>   
+            </button>
         </div>
     )
 }

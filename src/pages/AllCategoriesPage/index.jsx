@@ -1,5 +1,4 @@
-import { Catalog } from '../../components/Catalog'
-import styles from './AllCategoriesPage.module.css'
+import { Catalog } from '../../components/Catalog';
 
 export const AllCategoriesPage = () => {
     return (

@@ -14,7 +14,7 @@ export const CouponForm = () => {
 
     const handlePhoneChange = (e) => {
         const phoneValue = e.target.value;
-        setValue('phone', (isPhoneValid(phoneValue) ? phoneValue : `+49${phoneValue}`).replace(/[^0-9\+]/, ""));
+        setValue('phone', (isPhoneValid(phoneValue) ? phoneValue : `+49${phoneValue}`).replace(/[^0-9]/, ""));
     };
 
     const disabled = isLoading || isSuccess;

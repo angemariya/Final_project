@@ -7,6 +7,8 @@ import { addItemToBasket } from '../../redux/basketSlice'
 import { Filtration } from '../../components/Filtration';
 import { ItemCard } from '../../components/ItemCard';
 import { ApplyFilter } from '../../utils/applyFilter';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import styles from './SalePage.module.css';
 
 export const SalePage = () => {
@@ -19,6 +21,16 @@ export const SalePage = () => {
     const addToBasketHandler = (event, el) => {
         event.preventDefault();
         dispatch(addItemToBasket(el));
+        toast(`${el.title} added to busket`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
     }
 
     const onFilterChanged = useCallback((filterObj) => {
@@ -42,7 +54,7 @@ export const SalePage = () => {
                     </div>
                 </>)
             }
-
+            <ToastContainer />
         </CenteringContainer>
     )
 }

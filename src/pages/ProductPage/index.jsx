@@ -3,12 +3,29 @@ import { useDispatch } from 'react-redux';
 import { useGetOneProductByCategoryQuery } from '../../redux/apiSlice';
 import { addItemToBasket } from '../../redux/basketSlice'
 import { CenteringContainer } from '../../components/CenteringContainer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import styles from './ProductPage.module.css';
 
 export const ProductPage = () => {
     const { id } = useParams();
     const { data, isLoading, error } = useGetOneProductByCategoryQuery(id);
     const dispatch = useDispatch();
+
+    const addToBasketHandler = (event, el) => {
+        event.preventDefault();
+        dispatch(addItemToBasket(el));
+        toast(`${el.title} added to busket`, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+    }
 
     const responseData = data && data[0];
 
@@ -21,7 +38,7 @@ export const ProductPage = () => {
                         <h1 className={styles.header}>{responseData && responseData.title}</h1>
                         <div className={styles.productWrapper}>
                             <div className={styles.imageWrapper}>
-                                <img src={`http://localhost:3333/${responseData.image}`} alt="product"/>
+                                <img src={`https://gardenshop.onrender.com/${responseData.image}`} alt="product"/>
                             </div>
                             <div className={styles.contentContainer}>
                                 {(responseData.discont_price !== null) ?
@@ -37,7 +54,7 @@ export const ProductPage = () => {
                                     </div>)
                                 }
                                 <button
-                                    onClick={() => dispatch(addItemToBasket(responseData))}
+                                    onClick={addToBasketHandler}
                                     className={styles.addButton}>
                                     To card
                                 </button>
@@ -46,6 +63,7 @@ export const ProductPage = () => {
                             </div>
                         </div>
                     </>)}
+            <ToastContainer />
         </CenteringContainer>
     );
 };

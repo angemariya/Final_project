@@ -15,7 +15,7 @@ export const Filtration = ({onChange, hideDiscountFilter = false}) => {
             sortOrder,
             discountedOnly: hideDiscountFilter || discountedOnly,
             })
-    }, [fromPrice, toPrice, sortOrder, discountedOnly, discountedOnly, onChange])
+    }, [fromPrice, toPrice, sortOrder, discountedOnly, discountedOnly, hideDiscountFilter, onChange])
     
     return (
         <div className={styles.filterMainContainer}>

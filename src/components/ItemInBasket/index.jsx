@@ -15,7 +15,7 @@ export const ItemInBasket = ({
     return (
         <div className={styles.itemWrapper}>
             <div className={styles.imageWrapper}>
-                <img src={`http://127.0.0.1:3333/${image}`} alt={title} />
+                <img src={`https://gardenshop.onrender.com//${image}`} alt={title} />
             </div>
             <p className={styles.title}>{title}</p>
             <div className={styles.counter}>
