@@ -8,12 +8,13 @@ import { Filtration } from '../../components/Filtration';
 import { ItemCard } from '../../components/ItemCard';
 import { ApplyFilter } from '../../utils/applyFilter';
 import { ToastContainer, toast } from 'react-toastify';
+import { SpinnerCircular } from 'spinners-react';
 import styles from './SalePage.module.css';
 import 'react-toastify/dist/ReactToastify.css'
 
 export const SalePage = () => {
     const [ newData, setNewData ] = useState();
-    const { data, error, isLoading } = useGetAllSaleQuery();
+    const { data, error, isError, isLoading } = useGetAllSaleQuery();
     const dispatch = useDispatch();
 
     const filteredData = data && data.filter(el=> el.price !== el.discont_price)
@@ -40,8 +41,8 @@ export const SalePage = () => {
     return (
         <CenteringContainer>
             {isLoading ?
-                (<h2>Loading...</h2>)
-                : error ? (<h2>Error</h2>)
+                (<SpinnerCircular enabled={true} />)
+                : isError ? (<h2>{error.message}</h2>)
                 : (<>
                     <h1 className={styles.header}>Products with sale</h1>
                     <Filtration onChange={onFilterChanged} hideDiscountFilter/>

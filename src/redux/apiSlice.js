@@ -32,4 +32,10 @@ export const apiSlice = createApi({
     }),
 });
 
-export const { useGetAllCategoriesQuery, useGetOneCategoryQuery, useGetOneProductByCategoryQuery, useGetAllSaleQuery, useGetAllProductsQuery, useSendDataMutation } = apiSlice;
+export const {
+    useGetAllCategoriesQuery,
+    useGetOneCategoryQuery,
+    useGetOneProductByCategoryQuery,
+    useGetAllSaleQuery,
+    useGetAllProductsQuery,
+    useSendDataMutation } = apiSlice;

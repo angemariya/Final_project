@@ -8,13 +8,14 @@ import { ItemCard } from '../../components/ItemCard';
 import { Filtration } from '../../components/Filtration';
 import { ApplyFilter } from '../../utils/applyFilter';
 import { ToastContainer, toast } from 'react-toastify';
+import { SpinnerCircular } from 'spinners-react';
 import styles from './AllProductsPage.module.css';
 import 'react-toastify/dist/ReactToastify.css'
 
 export const AllProductsPage = () => {
 
     const [newData, setNewData] = useState();
-    const { data, isLoading, error } = useGetAllProductsQuery();
+    const { data, isLoading, isError, error } = useGetAllProductsQuery();
     const dispatch = useDispatch();
 
     const addToBasketHandler = (event, el) => {
@@ -39,7 +40,8 @@ export const AllProductsPage = () => {
     return (
         <CenteringContainer>
             {
-                isLoading ? (<h2>Loading...</h2>) : error ? (<h2>Error</h2>) :
+                isLoading ? (<SpinnerCircular enabled={true} />) :
+                    isError ? (<h2>{error}</h2>) :
                     <>
                         <h1 className={styles.header}>All Products</h1>
                         <Filtration onChange={onFilterChanged} />

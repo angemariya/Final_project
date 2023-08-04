@@ -3,9 +3,7 @@ import styles from './ItemCard.module.css';
 export const ItemCard = ({ image, price, discont_price, title, addToBasketHandler }) => {
 
     return (
-        <div
-            className={styles.itemContainer}
-        >
+        <div className={styles.itemContainer}>
             <img className={styles.cardImage} src={`https://gardenshop.onrender.com/${image}`} alt="item"/>
             <div className={styles.priceContainer}>
                 {(discont_price !== price) ?

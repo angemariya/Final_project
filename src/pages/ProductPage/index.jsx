@@ -4,12 +4,13 @@ import { useGetOneProductByCategoryQuery } from '../../redux/apiSlice';
 import { addItemToBasket } from '../../redux/basketSlice'
 import { CenteringContainer } from '../../components/CenteringContainer';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import { SpinnerCircular } from 'spinners-react';
 import styles from './ProductPage.module.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 export const ProductPage = () => {
     const { id } = useParams();
-    const { data, isLoading, error } = useGetOneProductByCategoryQuery(id);
+    const { data, isLoading, isError, error } = useGetOneProductByCategoryQuery(id);
     const dispatch = useDispatch();
 
     const responseData = data && data[0];
@@ -30,9 +31,8 @@ export const ProductPage = () => {
 
     return (
         <CenteringContainer>
-            {isLoading ?
-                (<h2>Loading...</h2>) :
-                error ? (<h2>Error</h2>) :
+            {isLoading ? (<SpinnerCircular enabled={true}/>) :
+                isError ? (<h2>{error.message}</h2>) :
                     (<>
                         <h1 className={styles.header}>{responseData && responseData.title}</h1>
                         <div className={styles.productWrapper}>
