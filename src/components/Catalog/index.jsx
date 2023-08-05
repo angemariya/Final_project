@@ -1,6 +1,7 @@
 import { CenteringContainer } from "../CenteringContainer";
 import { useGetAllCategoriesQuery } from '../../redux/apiSlice';
 import { NavLink } from "react-router-dom";
+import { SpinnerCircular } from 'spinners-react';
 import Carousel from 'better-react-carousel';
 import styles from './Catalog.module.css';
 
@@ -14,7 +15,7 @@ export const Catalog = () => {
                 <div className={styles.descriptionLabel}>All categories</div>
             </div>
 
-            {isLoading ? <h2>Loading...</h2> :
+            {isLoading ? (<SpinnerCircular enabled={true} />) :
                 isError ? <h2>Error: {error}</h2> :
                     <Carousel
                         cols={4} rows={1} gap={30} loop

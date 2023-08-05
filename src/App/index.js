@@ -15,7 +15,9 @@ export function App() {
   return (
     <>
       <Header />
-      <Outlet ref={ref}/>
+      <div ref={ref}>
+        <Outlet />
+      </div>
       <Footer />
       <a className={styles.button} onClick={scrollToTop}> 
         <img src={Arrow} alt="arrow up"/> 
