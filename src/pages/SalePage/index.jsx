@@ -17,7 +17,7 @@ export const SalePage = () => {
     const { data, error, isError, isLoading } = useGetAllSaleQuery();
     const dispatch = useDispatch();
 
-    const filteredData = data && data.filter(el=> el.price !== el.discont_price)
+    // const filteredData = data && data.filter(el=> el.price !== el.discont_price)
 
     const addToBasketHandler = (event, el) => {
         event.preventDefault();
@@ -35,8 +35,8 @@ export const SalePage = () => {
     }
 
     const onFilterChanged = useCallback((filterObj) => {
-        setNewData(ApplyFilter(filteredData || [], filterObj))
-    }, [filteredData])
+        setNewData(ApplyFilter(data || [], filterObj))
+    }, [data])
 
     return (
         <CenteringContainer>

@@ -2,7 +2,7 @@
 export const ApplyFilter = (items, {fromPrice, toPrice, sortOrder, discountedOnly}) => {
     const filteredItems = discountedOnly
         ? items
-            .filter((item) => item.discont_price !== null)
+            .filter((item) => item.discont_price !== item.price)
             .filter((item) => {
               return (
                 (!fromPrice ||
