@@ -4,9 +4,9 @@ export const ItemCard = ({ image, price, discont_price, title, addToBasketHandle
 
     return (
         <div className={styles.itemContainer}>
-            <img className={styles.cardImage} src={`https://gardenshop.onrender.com/${image}`} alt="item"/>
+            <img className={styles.cardImage} src={`http://localhost:3333/${image}`} alt="item"/>
             <div className={styles.priceContainer}>
-                {(discont_price !== price) ?
+                {discont_price ?
                     (<>
                         <p className={styles.mainPrice}>{discont_price} $</p>
                         <p className={styles.priceWithDiscount}>{price} $</p>

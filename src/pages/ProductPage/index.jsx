@@ -37,12 +37,15 @@ export const ProductPage = () => {
                         <h1 className={styles.header}>{responseData && responseData.title}</h1>
                         <div className={styles.productWrapper}>
                             <div className={styles.imageWrapper}>
-                                <img src={`https://gardenshop.onrender.com/${responseData.image}`} alt="product"/>
+                                <img src={`http://localhost:3333/${responseData.image}`} alt="product"/>
                             </div>
                             <div className={styles.contentContainer}>
-                                {(responseData.discont_price !== null) ?
+                                {responseData.discont_price ?
                                     (<div className={styles.priceWithDiscount}>
-                                        <div className={styles.price}>{responseData.discont_price}<span className={styles.dollarSign}>$</span></div>
+                                        <div className={styles.price}>
+                                            {responseData.discont_price}
+                                            <span className={styles.dollarSign}>$</span>
+                                        </div>
                                         <div className={styles.discountPrice}>{responseData.price} <span>$</span> </div>
                                         <div className={styles.discount}>{Math.floor(100 - (responseData.discont_price / responseData.price / 0.01))}%</div>
                                     </div>)

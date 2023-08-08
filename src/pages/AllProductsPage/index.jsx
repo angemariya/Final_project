@@ -33,6 +33,7 @@ export const AllProductsPage = () => {
         })
     }
 
+
     const onFilterChanged = useCallback((filterObj) => {
         setNewData(ApplyFilter(data || [], filterObj))
     }, [data])

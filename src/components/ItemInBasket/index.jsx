@@ -15,7 +15,7 @@ export const ItemInBasket = ({
     return (
         <div className={styles.itemWrapper}>
             <div className={styles.imageWrapper}>
-                <img src={`https://gardenshop.onrender.com//${image}`} alt={title} />
+                <img src={`http://localhost:3333/${image}`} alt={title} />
             </div>
             <p className={styles.title}>{title}</p>
             <div className={styles.counter}>
@@ -25,7 +25,7 @@ export const ItemInBasket = ({
 
             </div>
             <>
-                {discont_price !== price
+                {discont_price
                     ? (
                         <>
                             <span className={styles.discountPrice}>

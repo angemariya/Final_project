@@ -17,7 +17,7 @@ export const MainSaleSection = () => {
                     (<div className={styles.itemsWrapper}>
                         {filteredData && filteredData.map(el =>
                             <NavLink to={`/products/${el.id}`} key={el.id} className={styles.itemContainer}>
-                                <img src={`https://gardenshop.onrender.com/${el.image}`} alt="sale product" />
+                                <img src={`http://localhost:3333/${el.image}`} alt="sale product" />
                                 <div className={styles.priceContainer}>
                                     {(el.discont_price) ?
                                         (<>

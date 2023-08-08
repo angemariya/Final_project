@@ -34,9 +34,12 @@ export const CategoryPage = () => {
         })
     }
 
+    const responseData = data?.data;
+
     const onFilterChanged = useCallback((filterObj) => {
-        setNewData(ApplyFilter(data || [], filterObj))
-    }, [data])
+        setNewData(ApplyFilter(responseData || [], filterObj))
+    }, [responseData])
+
 
     return (
         <CenteringContainer>
