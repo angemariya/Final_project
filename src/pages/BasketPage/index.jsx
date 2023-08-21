@@ -6,7 +6,8 @@ import { useSendDataMutation } from "../../redux/apiSlice";
 import {
     addQuantityToItem,
     deleteQuantityToItem,
-    deleteItem
+    deleteItem,
+    clearBasket
 } from '../../redux/basketSlice';
 import { Arrowright } from './Arrowright';
 import styles from './BasketPage.module.css';
@@ -32,27 +33,33 @@ export const BasketPage = () => {
         dispatch(deleteQuantityToItem(item));
     };
 
+    const clearBasketHandler = () => {
+        dispatch(clearBasket())
+    }
+
     const [sendData, { isLoading, isSuccess, isError }] = useSendDataMutation();
     const [phoneNum, setPhone] = useState();
+    const [showMessage, setShowMessage] = useState("")
 
-    const isValid = (num) => {
-        const pattern = /^[+\d][\d]{12}\d$/;
-        return pattern.test(num);
+    const isValid = (number) => {
+        const pattern = /^(\+49)(\d{3,4}) ?(\d{3,4})(\d{4})$/;
+        return pattern.test(number);
     }
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
 
         if (!isValid(phoneNum)) {
-            console.log("Please enter a correct phone number. Your number must starts with '+49' and contains 14 numbers");
+            setShowMessage("Please enter a correct phone number. Your number must starts with '+49' and contains 14 numbers");
             return;
         }
         if (!phoneNum) {
-            console.log("Please enter your phone number before submit")
+            setShowMessage("Please enter your phone number before submit")
             return;
         }
 
-        sendData(phoneNum)
+        sendData(phoneNum);
+        clearBasketHandler();
     }
 
     return (
@@ -73,7 +80,7 @@ export const BasketPage = () => {
             <div>
                 {isLoading ? <h2>Loading...</h2>
                     : isError ? <h2>Something is going wrong. Please try later</h2>
-                        : isSuccess ? <h2>Your phone number has been sent</h2>
+                        : isSuccess ? <h2>Thank you for your order.</h2>
                             :
                             <form className={styles.orderDetails} onSubmit={formSubmitHandler}>
                                 <p className={styles.header}>Order details</p>
@@ -102,6 +109,7 @@ export const BasketPage = () => {
                                     maxLength={14} minLength={12}
                                     required
                                 />
+                                {<p className={styles.messageError}>{showMessage}</p>}
                                 <button
                                     className={styles.orderButton}
                                     type="submit">Order</button>

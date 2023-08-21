@@ -1,23 +1,42 @@
-import { useForm, Controller } from "react-hook-form";
+import { useState } from "react";
 import { useSendDataMutation } from "../../redux/apiSlice";
+import { useOutletContext } from "react-router-dom";
 import styles from "./CouponForm.module.css"
 import gnome from "../../images/gnome.png"
 
 export const CouponForm = () => {
-    const { handleSubmit, control, setValue } = useForm();
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [isValid, setIsValid] = useState(true);
+    const [showError, setShowError] = useState("");
+    const [sendPhoneNumber] = useSendDataMutation();
+    const [openModal, setOpenModal] = useOutletContext();
 
-    const [sendData, { isLoading, isSuccess, isError }] = useSendDataMutation();
-
-    const isPhoneValid = (phone) => {
-        return phone.startsWith('+49') || phone.startsWith('+4') || phone.startsWith('+')
-    }
-
-    const handlePhoneChange = (e) => {
-        const phoneValue = e.target.value;
-        setValue('phone', (isPhoneValid(phoneValue) ? phoneValue : `+49${phoneValue}`).replace(/[^0-9]/, ""));
+    const validatePhoneNumber = (number) => {
+        const phoneNumberRegex = /^(\+49)(\d{3,4}) ?(\d{3,4})(\d{4})$/;
+        return phoneNumberRegex.test(number);
     };
 
-    const disabled = isLoading || isSuccess;
+    const handlePhoneNumberChange = (event) => {
+        const newPhoneNumber = event.target.value;
+        setPhoneNumber(newPhoneNumber);
+        setIsValid(validatePhoneNumber(newPhoneNumber));
+        console.log(newPhoneNumber);
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (isValid) {
+            try {
+                const response = await sendPhoneNumber(phoneNumber);
+                setOpenModal(true);
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            setShowError('Invalid phone number');
+        }
+    };
+
 
     return (
         <div className={styles.wrapper}>
@@ -25,34 +44,21 @@ export const CouponForm = () => {
             <div className={styles.formWrapper}>
                 <div className={styles.textWrapper}>
                     <span className={styles.bigtextWrapper}>5% off </span><br />on the first order</div>
-                <form className={styles.form} onSubmit={handleSubmit(sendData)}>
-                    <Controller
-                        name="phone"
-                        control={control}
-                        
-                        render={({ field, fieldState: { error } }) => (
-                            <>
-                                <input
-                                    disabled={disabled}
-                                    placeholder="+49"
-                                    {...field}
-                                    className={styles.input}
-                                    type='phone'
-                                    onChange={handlePhoneChange}
-                                    maxLength={14}
-                                    minLength={14}
-                                    required
-                                />
-                                {error && <span>Phone number is required.</span>}
-                            </>
-                        )}
+                <form className={styles.form} onSubmit={handleSubmit}>
+                    <input
+                        className={styles.input}
+                        placeholder="+49"
+                        type="tel"
+                        value={phoneNumber}
+                        required
+                        onChange={handlePhoneNumberChange}
                     />
-                    {isSuccess && <div className={styles.message}>Success. Your phone number was submitted.</div>}
-                    {isError && <div className={styles.message}>Error occurred while submitting form data. Please try later.</div>}
+                    {!isValid && <p className={styles.message}>Please enter a valid phone number in format +49XXXXXXXXX</p>}
+                    {showError && <p className={styles.messageError}>{showError}</p>}
                     <button
-                        disabled={disabled}
                         className={styles.formButton}
-                        type="submit">Get a discount</button>
+                        type="submit"
+                    >Get a discount</button>
                 </form>
             </div>
         </div>

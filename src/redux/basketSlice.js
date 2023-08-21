@@ -72,6 +72,13 @@ export const basketSlice = createSlice({
             state.totalItems = calculateTotalItems(state);
             writeToLS(state.products)
         },
+        clearBasket: (state) => {
+            state.products = [];
+            state.totalDiscount = 0;
+            state.totalItems = 0;
+            state.totalPrice = 0;
+            writeToLS(state.products);
+        }
     }
 });
 
@@ -79,5 +86,7 @@ export const {
     addItemToBasket,
     addQuantityToItem,
     deleteItem,
-    deleteQuantityToItem } = basketSlice.actions;
+    deleteQuantityToItem,
+    clearBasket
+} = basketSlice.actions;
 export const basketReducer = basketSlice.reducer;

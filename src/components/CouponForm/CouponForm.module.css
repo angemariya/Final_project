@@ -66,6 +66,15 @@
 }
 
 .message {
-    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 15px;
     color: white;
+}
+
+.messageError {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+    color: yellow;
 }
