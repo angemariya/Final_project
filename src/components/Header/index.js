@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { BurgerMenu } from "../BurgerMenu";
 import styles from './Header.module.css';
 import logo from '../../images/logo.svg';
 import busket from '../../images/busket.svg';
-import { useSelector } from "react-redux";
-import { BurgerMenu } from "../BurgerMenu";
 
 export const Header = () => {
 
