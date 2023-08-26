@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
-import styles from './Modal.module.css';
 import { useEffect, useMemo } from 'react';
+import styles from './Modal.module.css';
 
 const modalWindow = document.getElementById('modal');
 

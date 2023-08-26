@@ -20,7 +20,6 @@ export const CouponForm = () => {
         const newPhoneNumber = event.target.value;
         setPhoneNumber(newPhoneNumber);
         setIsValid(validatePhoneNumber(newPhoneNumber));
-        console.log(newPhoneNumber);
     };
 
     const handleSubmit = async (event) => {
