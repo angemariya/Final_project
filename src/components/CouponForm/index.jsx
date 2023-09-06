@@ -42,7 +42,7 @@ export const CouponForm = () => {
             <img className={styles.imageWrapper} src={gnome} alt="gnome" />
             <div className={styles.formWrapper}>
                 <div className={styles.textWrapper}>
-                    <span className={styles.bigtextWrapper}>5% off </span><br />on the first order</div>
+                    <span className={styles.bigtextWrapper}>5% off </span><br/>on the first order</div>
                 <form className={styles.form} onSubmit={handleSubmit}>
                     <input
                         className={styles.input}

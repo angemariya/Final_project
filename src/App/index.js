@@ -39,7 +39,7 @@ export function App() {
           <img src={Arrow} alt="arrow up" />
         </a>
       )}
-      <Modal open={openModal} onClose={()=>setOpenModal(false)} >Your phone number has been saved</Modal>
+      <Modal open={openModal} onClose={()=>setOpenModal(false)} >You get your discount code with a message</Modal>
     </>
   );
 }

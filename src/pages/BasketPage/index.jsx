@@ -10,6 +10,7 @@ import {
     clearBasket
 } from '../../redux/basketSlice';
 import { Arrowright } from './Arrowright';
+import { ToastContainer, toast } from 'react-toastify';
 import styles from './BasketPage.module.css';
 
 export const BasketPage = () => {
@@ -58,9 +59,22 @@ export const BasketPage = () => {
             return;
         }
 
+        toast("Thank you for your order", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+
         sendData(phoneNum);
         clearBasketHandler();
     }
+
+    
 
     return (
         <main className={styles.basketPage}>
@@ -80,7 +94,6 @@ export const BasketPage = () => {
             <div>
                 {isLoading ? <h2>Loading...</h2>
                     : isError ? <h2>Something is going wrong. Please try later</h2>
-                        : isSuccess ? <h2>Thank you for your order.</h2>
                             :
                             <form className={styles.orderDetails} onSubmit={formSubmitHandler}>
                                 <p className={styles.header}>Order details</p>
@@ -108,13 +121,15 @@ export const BasketPage = () => {
                                     onChange={(e) => setPhone(e.target.value)}
                                     maxLength={14} minLength={12}
                                     required
-                                />
-                                {<p className={styles.messageError}>{showMessage}</p>}
+                            />
+                            <p className={styles.message}>Please enter a valid phone number in format +49XXXXXXXXX</p>
+                            {<p className={styles.messageError}>{showMessage}</p>}
                                 <button
                                     className={styles.orderButton}
                                     type="submit">Order</button>
-                            </form>
+                        </form>
                 }
+                <ToastContainer />
             </div>
         </main>
     )

@@ -78,3 +78,28 @@
     margin-top: 10px;
     color: yellow;
 }
+
+@media (max-width: 768px) {
+    .textWrapper {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .bigtextWrapper{
+        font-size: 50px;
+    }
+
+    .input {
+        padding: 20px 30px;
+        font-size: 14px;
+    }
+
+    .formButton {
+        font-size: 20px;
+        padding: 15px 10%;
+    }
+
+    .wrapper img {
+        display: none;
+    }
+}

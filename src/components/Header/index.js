@@ -25,7 +25,7 @@ export const Header = () => {
                     </ul>
                     <NavLink className={styles.busket} to='/basket'>
                         <img src={busket} alt="busket" />
-                        <span className={styles.counter}>{productsInBusket}</span></NavLink>
+                        <span className={styles.counter}>{productsInBusket}</span></NavLink> 
                 </nav>
             </div>
         </header>

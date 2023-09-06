@@ -19,7 +19,10 @@ export const Modal = (props) => {
     if (open) {
             return createPortal(
                 <div className={styles.modalBackground} onClick={onClose}>
-                    <div className={styles.modalWindow}>{props.children}</div>
+                    <div className={styles.modalWindow}>
+                        {props.children}
+                        <button className={styles.modalWindowButton}onClick={onClose}>Close</button>
+                    </div>
                 </div>,
                 element
         )

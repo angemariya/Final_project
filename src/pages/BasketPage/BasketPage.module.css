@@ -98,6 +98,13 @@
     color: red;
 }
 
+.message {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 25px;
+    color: green;
+}
+
 @media only screen and (min-width: 750px) and (max-width: 1260px) {
     .basketPage {
         grid-template-columns: 1fr;

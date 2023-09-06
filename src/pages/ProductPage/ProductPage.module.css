@@ -100,5 +100,33 @@
 @media only screen and (max-width: 750px) {
     .productWrapper {
         grid-template-columns: 1fr;
+        margin: 0 20px;
+    }
+
+    .price {
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+
+    .discountPrice {
+        font-size: 16px;
+    }
+
+    .priceWithDiscount{ 
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .addButton {
+        width: 100%;
+    }
+
+    .price {
+        margin-bottom: 0;
+    }
+
+    .descriptionTitle {
+        font-size: 16px;
     }
 }

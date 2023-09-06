@@ -18,5 +18,25 @@
     background-color: #fff;
     padding: 25px;
     border: 2px solid black;
-    border-radius: 2px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.modalWindowButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    color: #fff;
+    background-color: #393;
+    border: none;
+    border-radius: 17px;
+    cursor: pointer;
 }
