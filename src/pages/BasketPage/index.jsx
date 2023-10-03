@@ -38,7 +38,7 @@ export const BasketPage = () => {
         dispatch(clearBasket())
     }
 
-    const [sendData, { isLoading, isSuccess, isError }] = useSendDataMutation();
+    const [sendData, { isLoading, isError }] = useSendDataMutation();
     const [phoneNum, setPhone] = useState();
     const [showMessage, setShowMessage] = useState("")
 

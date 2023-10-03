@@ -8,8 +8,7 @@ export const CouponForm = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [showError, setShowError] = useState("");
-    const [sendPhoneNumber] = useSendDataMutation();
-    const [openModal, setOpenModal] = useOutletContext();
+    const [setOpenModal] = useOutletContext();
 
     const validatePhoneNumber = (number) => {
         const phoneNumberRegex = /^(\+49)(\d{3,4}) ?(\d{3,4})(\d{4})$/;
@@ -26,7 +25,6 @@ export const CouponForm = () => {
         event.preventDefault();
         if (isValid) {
             try {
-                const response = await sendPhoneNumber(phoneNumber);
                 setOpenModal(true);
             } catch (error) {
                 console.log(error);

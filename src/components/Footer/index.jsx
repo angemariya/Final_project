@@ -13,11 +13,11 @@ export const Footer = () => {
                         <a className={styles.phoneNumber} href="tel:+499999999999">+49 999 999 99 99</a>
                         <div className={styles.socialIcons}>
                             <div className={styles.socialIconWrapper}>
-                                <a href="#"><img src={instagramIcon} /></a>
+                                <a href="https://www.instagram.com"><img src={instagramIcon} alt='We in Instagram'/></a>
                                 <span>Instagram</span>
                             </div>
                             <div className={styles.socialIconWrapper}>
-                                <a href="#"><img src={whatsupIcon} /></a>
+                                <a href="https://www.whatsup.com"><img src={whatsupIcon} alt="Contact us per Whatsup"/></a>
                                 <span>WhatsApp</span>
                             </div>
                         </div>

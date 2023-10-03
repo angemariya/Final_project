@@ -35,9 +35,9 @@ export function App() {
       </div>
       <Footer />
       {showScrollButton && (
-        <a className={styles.button} onClick={scrollToTop}>
+        <span className={styles.button} onClick={scrollToTop} >
           <img src={Arrow} alt="arrow up" />
-        </a>
+        </span>
       )}
       <Modal open={openModal} onClose={()=>setOpenModal(false)} >You get your discount code with a message</Modal>
     </>
