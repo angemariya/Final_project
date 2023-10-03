@@ -32,3 +32,5 @@ jobs:
         run: npm ci
       - name: Build react app
         run: npm run build
+      - name: Check that app works
+        run: npm test
