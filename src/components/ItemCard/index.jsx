@@ -1,10 +1,11 @@
 import styles from './ItemCard.module.css';
+import  { BASE_URL } from '../../redux/apiSlice';
 
 export const ItemCard = ({ image, price, discont_price, title, addToBasketHandler }) => {
 
     return (
         <div className={styles.itemContainer}>
-            <img className={styles.cardImage} src={`http://localhost:3333/${image}`} alt="item"/>
+            <img className={styles.cardImage} src={`${BASE_URL}${image}`} alt="item"/>
             <div className={styles.priceContainer}>
                 {discont_price ?
                     (<>

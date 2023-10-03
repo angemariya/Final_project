@@ -5,6 +5,7 @@ import { addItemToBasket } from '../../redux/basketSlice'
 import { CenteringContainer } from '../../components/CenteringContainer';
 import { ToastContainer, toast } from 'react-toastify';
 import { SpinnerCircular } from 'spinners-react';
+import { BASE_URL } from '../../redux/apiSlice';
 import styles from './ProductPage.module.css';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -37,7 +38,7 @@ export const ProductPage = () => {
                         <h1 className={styles.header}>{responseData && responseData.title}</h1>
                         <div className={styles.productWrapper}>
                             <div className={styles.imageWrapper}>
-                                <img src={`http://localhost:3333/${responseData.image}`} alt="product"/>
+                                <img src={`${BASE_URL}${responseData.image}`} alt="product"/>
                             </div>
                             <div className={styles.contentContainer}>
                                 {responseData.discont_price ?

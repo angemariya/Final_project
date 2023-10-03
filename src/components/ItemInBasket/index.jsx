@@ -1,5 +1,6 @@
 import styles from './ItemInBasket.module.css';
 import { CloseIcon } from './CloseIcon';
+import { BASE_URL } from '../../redux/apiSlice';
 
 export const ItemInBasket = ({
     title,
@@ -15,7 +16,7 @@ export const ItemInBasket = ({
     return (
         <div className={styles.itemWrapper}>
             <div className={styles.imageWrapper}>
-                <img src={`http://localhost:3333/${image}`} alt={title} />
+                <img src={`${BASE_URL}${image}`} alt={title} />
             </div>
             <p className={styles.title}>{title}</p>
             <div className={styles.counter}>

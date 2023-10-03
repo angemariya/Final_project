@@ -2,6 +2,7 @@ import { CenteringContainer } from "../CenteringContainer";
 import { useGetAllCategoriesQuery } from '../../redux/apiSlice';
 import { NavLink } from "react-router-dom";
 import { SpinnerCircular } from 'spinners-react';
+import { BASE_URL } from "../../redux/apiSlice";
 import Carousel from 'better-react-carousel';
 import styles from './Catalog.module.css';
 
@@ -34,7 +35,7 @@ export const Catalog = () => {
                         {data && data.map(el =>
                             <Carousel.Item className={styles.catalogOneItemWrapper} key={el.id}>
                                 <NavLink to={`/categories/${el.id}`} key={el.id}>
-                                    <img className={styles.itemImage} src={`http://localhost:3333/${el.image}`} alt={el.title} />
+                                    <img className={styles.itemImage} src={`${BASE_URL}${el.image}`} alt={el.title} />
                                     <p className={styles.catalogItemLabel}>{el.title}</p>
                                 </NavLink>
                             </Carousel.Item>

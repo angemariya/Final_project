@@ -15,8 +15,8 @@ import 'react-toastify/dist/ReactToastify.css'
 export const CategoryPage = () => {
 
     const [newData, setNewData] = useState();
-    const { id } = useParams();
     const { data, error, isError, isLoading } = useGetOneCategoryQuery(id);
+    const { id } = useParams();
     const dispatch = useDispatch();
 
     const addToBasketHandler = (event, el) => {

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useGetAllSaleQuery } from '../../redux/apiSlice';
+import { BASE_URL, useGetAllSaleQuery } from '../../redux/apiSlice';
 import { CenteringContainer } from '../CenteringContainer';
 import { SpinnerCircular } from 'spinners-react';
 import styles from './MainSaleSection.module.css';
@@ -17,7 +17,7 @@ export const MainSaleSection = () => {
                     (<div className={styles.itemsWrapper}>
                         {filteredData && filteredData.map(el =>
                             <NavLink to={`/products/${el.id}`} key={el.id} className={styles.itemContainer}>
-                                <img src={`http://localhost:3333/${el.image}`} alt="sale product" />
+                                <img src={`${BASE_URL}${el.image}`} alt="sale product" />
                                 <div className={styles.priceContainer}>
                                     {(el.discont_price) ?
                                         (<>
