@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSendDataMutation } from "../../redux/apiSlice";
 import { useOutletContext } from "react-router-dom";
 import styles from "./CouponForm.module.css"
 import gnome from "../../images/gnome.png"
